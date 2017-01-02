@@ -62,21 +62,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <h3>Formal education</h3>
                      <p>Education is the process of facilitating learning. Knowledge, skills, values, beliefs, and habits of a group of people are transferred to other people, through storytelling.</p>
                     <div class="readmore">
-                    <a href="http://localhost:8080/application/views/home/about.html">Read More<i class="glyphicon glyphicon-menu-right"> </i></a>
+                    <a href="http://localhost:8080/application/views/home/about.php">Read More<i class="glyphicon glyphicon-menu-right"> </i></a>
                     </div>
                  </li>
                  <li>
                     <h3>Self-directed learning</h3>
                      <p>Learning Education is the process of facilitating learning. Knowledge, skills, values, beliefs, and habits of a group of people are transferred to other people, through storytelling.</p>
                  <div class="readmore">
-                 <a href="http://localhost:8080/application/views/home/about.html">Read More<i class="glyphicon glyphicon-menu-right"> </i></a>
+                 <a href="http://localhost:8080/application/views/home/about.php">Read More<i class="glyphicon glyphicon-menu-right"> </i></a>
                  </div>
                  </li>
                  <li>
                     <h3>Learning modalities</h3>
                      <p>Storytelling Education is the process of facilitating learning. Knowledge, skills, values, beliefs, and habits of a group of people are transferred to other people, through.</p>
                 <div class="readmore">
-                 <a href="http://localhost:8080/application/views/home/about.html">Read More<i class="glyphicon glyphicon-menu-right"> </i></a>
+                 <a href="http://localhost:8080/application/views/home/about.php">Read More<i class="glyphicon glyphicon-menu-right"> </i></a>
                  </div>
                  </li>
               </ul>
@@ -93,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </div>
 <div class="register">
-    <center><form id="registerForm" method="post" action="window.open("index.html")">
+    <center><form id="registerForm" method="post" action="window.open("index.php")">
         <fieldset id="body">
             <fieldset>
                 <label for="name">姓 名:</label>
@@ -170,11 +170,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="col-md-6 footer-left">
                 <ul>
-                    <li><a href="http://localhost:8080/application/views/home/index.html">Home</a></li>
-                    <li><a href="http://localhost:8080/application/views/home/about.html">About</a></li>
-                    <li><a href="http://localhost:8080/application/views/home/typography.html">Shortcodes</a></li>
-                    <li><a href="http://localhost:8080/application/views/home/gallery.html">Gallery</a></li>
-                    <li><a href="http://localhost:8080/application/views/home/contact.html">Contact</a></li>
+                    <li><a href="http://localhost:8080/application/views/home/index.php">Home</a></li>
+                    <li><a href="http://localhost:8080/application/views/home/about.php">About</a></li>
+                    <li><a href="http://localhost:8080/application/views/home/typography.php">Shortcodes</a></li>
+                    <li><a href="http://localhost:8080/application/views/home/gallery.php">Gallery</a></li>
+                    <li><a href="http://localhost:8080/application/views/home/contact.php">Contact</a></li>
                 </ul>
                 <form>
                     <input type="text" placeholder="Email" required="">

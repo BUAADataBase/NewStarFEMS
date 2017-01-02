@@ -50,17 +50,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span class="icon-bar"> </span>
                         <span class="icon-bar"> </span>
                     </button>
-                    <h1><a class="navbar-brand" href="http://localhost:8080/application/views/home/index.html">Education<br /><span>Tutorial</span></a></h1>
+                    <h1><a class="navbar-brand" href="http://localhost:8080/application/views/home/index.php">Education<br /><span>Tutorial</span></a></h1>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right margin-top cl-effect-2">
                                 <li><p style="position:absolute;left:-150px;top:23px"><font color="white">欢迎，xxx</font></p></li>
-                                <li><a href="http://localhost:8080/application/views/home/index.html"><span data-hover="first_page">首页</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/about.html"><span data-hover="choose_course">选课</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/typography.html"><span data-hover="course">已选课程</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/gallery.html"><span data-hover="blog">博客</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/contact.html"><span data-hover="information">个人信息</span></a></li>
+                                <li><a href="http://localhost:8080/application/views/home/index.php"><span data-hover="first_page">首页</span></a></li>
+                                <li><a href="http://localhost:8080/application/views/home/about.php"><span data-hover="choose_course">选课</span></a></li>
+                                <li><a href="http://localhost:8080/application/views/home/typography.php"><span data-hover="course">已选课程</span></a></li>
+                                <li><a href="http://localhost:8080/application/views/home/gallery.php"><span data-hover="blog">博客</span></a></li>
+                                <li><a href="http://localhost:8080/application/views/home/contact.php"><span data-hover="information">个人信息</span></a></li>
                             </ul>
                             <div class="clearfix"> </div>
                         </div><!-- /.navbar-collapse -->
