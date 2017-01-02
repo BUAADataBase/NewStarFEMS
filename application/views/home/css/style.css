@@ -25,8 +25,8 @@ input[type="button"],input[type="submit"],li.parallelogram{
 	-ms-transition:0.5s all;
 }
 h1,h2,h3,h4,h5,h6{
-   margin:0;	
-}	
+   margin:0;
+}
 p{
 	margin:0;
 font-family: 'Open Sans', sans-serif;
@@ -461,11 +461,73 @@ i.arrow {
 	 color:#fff;
  }
 /* Login Button */
-#loginButton { 
-    display:inline-block;  
+#loginButton {
+    display:inline-block;
     position:relative;
     z-index:30;
     cursor:pointer;
+}
+#logoutButton {
+    display:inline-block;
+    position:relative;
+    z-index:30;
+    cursor:pointer;
+    width: 120px;
+    position: absolute;
+}
+#registerForm{
+   width: 1000px;
+  background: #fff;
+  border: 1px solid #d6d6d6;
+  height: 700px;
+}
+#registerForm fieldset {
+    margin:0 0 15px 0;
+    display:block;
+    border:0;
+    padding:0;
+}
+#registerForm #register {
+  width: auto;
+  float: left;
+  background:#232428;
+  color: #fff;
+  font-size: 0.8725em;
+  padding: 7px 20px;
+  border: none;
+  margin: 0 12px 0 0;
+  cursor: pointer;
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  outline:none;
+  text-transform: uppercase;
+
+}
+#registerForm #register:hover{
+     background:#476bba;
+}
+#loginForm #register {
+  width: auto;
+  float: left;
+  background:#232428;
+  color: #fff;
+  font-size: 0.8725em;
+  padding: 7px 20px;
+  border: none;
+  margin: 0 12px 0 0;
+  cursor: pointer;
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  outline:none;
+  text-transform: uppercase;
+
+}
+#loginForm #register:hover{
+     background:#476bba;
 }
 /* Login Box */
 #loginBox {
@@ -489,7 +551,7 @@ i.arrow {
 	  width: 300px;
   background: #fff;
   border: 1px solid #d6d6d6;
-  height: 251px;
+  height: 281px;
 }
 #loginForm fieldset {
     margin:0 0 15px 0;
@@ -541,7 +603,7 @@ fieldset#body {
   -o-transition: all .5s;
   outline:none;
   text-transform: uppercase;
-  
+
 }
 #loginForm #login:hover{
      background:#476bba;
@@ -670,19 +732,28 @@ i.glyphicon.glyphicon-font{
 	color:#E1009F ;
 }
 i.glyphicon.glyphicon-blackboard{
-    font-size: 3em;	
+    font-size: 3em;
 }
 .welcome-grid:hover.welcome-grid h3{
 	color:#E1009F ;
 }
 i.glyphicon.glyphicon-education{
-    font-size: 3em;	
+    font-size: 3em;
 }
 .welcome-grid:hover.welcome-grid h3{
 	color:#E1009F ;
 }
 .effect-grid {
     padding: 7em 0;
+}
+.user_background {
+    background: url(../images/u1.jpg) no-repeat 0 0px;
+    background-size: cover;
+    padding: 2em 0 0 0;
+    positon: relative;
+    text-align: center;
+    margin-bottom: 0;
+    min-height: 307px;
 }
 /*-- testimonial --*/
 .testimonials {
@@ -1343,7 +1414,7 @@ ul.p_n-list li a{
 }
 ul.p_n-list li a:hover{
 	background:#000;
-}		
+}
 /*-- .gallery__ Gallery Page Ends Here --*/
 /*-- contact --*/
 .contact{
@@ -2196,7 +2267,7 @@ ul.p_n-list li a:hover{
 	}
 	.rslides p {
 	    width: 77%;
-	}	
+	}
 	.welcome h2 {
 	    font-size: 1.8em;
 	    margin: 0;
@@ -2273,7 +2344,7 @@ ul.p_n-list li a:hover{
 	.testimonal-grid {
 	    width: 100%;
 	    float: none;
-	}	
+	}
 	.testi-info {
 	    margin-bottom: 2em;
 	}
