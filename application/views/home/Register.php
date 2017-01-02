@@ -39,7 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
     <body>
 <!--header-->
-<?php include ("head.php")?>
+<?php include ("head.php") ?>
 <!-- Top Navigation -->
 <div class="banner">
     <div class="container">
