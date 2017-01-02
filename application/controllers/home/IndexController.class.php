@@ -13,10 +13,17 @@ class IndexController extends BaseController{
     }
 
     public function indexAction(){
+        isset($_SESSION) or session_start();
         //$userModel = new UserModel("user");
         //$users = $userModel->getUsers();
         // Load View template
-        include(CURR_VIEW_PATH . "index.html");
+        if (isset($_SESSION['uid'])) {
+            include (CURR_VIEW_PATH . "main.php");
+        }
+        else {
+            include(CURR_VIEW_PATH . "index.php");
+        }
+        //include(CURR_VIEW_PATH . "index.php");
     }
 
     public function menuAction(){

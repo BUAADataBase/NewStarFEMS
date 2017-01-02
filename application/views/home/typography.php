@@ -4,7 +4,7 @@
 <title>Short Codes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Education Tutorial Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords" content="Education Tutorial Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--bootstrap-->
@@ -24,7 +24,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--script-->
 <script type="text/javascript">
 			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
+				$(".scroll").click(function(event){
 					event.preventDefault();
 					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
 				});
@@ -45,23 +45,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span class="icon-bar"> </span>
 						<span class="icon-bar"> </span>
 					</button>
-					<h1><a class="navbar-brand" href="index.html">Education<br /><span>Tutorial</span></a></h1>
+					<h1><a class="navbar-brand" href="index.php">Education<br /><span>Tutorial</span></a></h1>
 					</div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right margin-top cl-effect-2">
-								<li><a href="index.html"><span data-hover="Home">Home</span></a></li>
-								<li><a href="about.html"><span data-hover="About">About</span></a></li>
-								<li><a href="typography.html"><span data-hover="Shortcodes">Shortcodes</span></a></li>
-								<li><a href="gallery.html"><span data-hover="Gallery">Gallery</span></a></li>
-								<li><a href="contact.html"><span data-hover="Contact">Contact</span></a></li>
+								<li><a href="index.php"><span data-hover="Home">Home</span></a></li>
+								<li><a href="about.php"><span data-hover="About">About</span></a></li>
+								<li><a href="typography.php"><span data-hover="Shortcodes">Shortcodes</span></a></li>
+								<li><a href="gallery.php"><span data-hover="Gallery">Gallery</span></a></li>
+								<li><a href="contact.php"><span data-hover="Contact">Contact</span></a></li>
 							</ul>
 							<div class="clearfix"> </div>
 						</div><!-- /.navbar-collapse -->
 				<!-- /.container-fluid -->
 				<div class="login-pop">
 						<div id="loginpop"><a href="#" id="loginButton"><span>Login</span></a>
-								<div id="loginBox">                
+								<div id="loginBox">
 									<form id="loginForm">
 											<fieldset id="body">
 												<fieldset>
@@ -91,7 +91,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<h2>Short Codes</h2>
 	</div>
 </div>
-<!--header-->	
+<!--header-->
 <!--start-content-->
 <div class="typrography">
 	 <div class="container">
@@ -132,11 +132,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 <h3>Progress Bars</h3>
 			  <div class="tab-content">
 				 <div class="tab-pane active" id="domprogress">
-					 <div class="progress">    
+					 <div class="progress">
 					      <div class="progress-bar progress-bar-primary" style="width: 20%"></div>
 					 </div>
 					 <p>Info with <code>progress-bar-info</code> class.</p>
-					 <div class="progress">    
+					 <div class="progress">
 						 <div class="progress-bar progress-bar-info" style="width: 60%"></div>
 					 </div>
 					 <p>Success with <code>progress-bar-success</code> class.</p>
@@ -164,7 +164,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				   </div>
 			   </div>
 		   </div>
-		   
+
 		   <div class="grid_3 grid_5">
 			 <h3>Pagination</h3>
 			 <div class="col-md-6">
@@ -200,7 +200,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="#">5</a></li>
 					<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
 				  </ul>
-				 </nav>				 
+				 </nav>
 			 </div>
 			 <div class="col-md-6">
 					<ul class="pagination pagination-lg">
@@ -287,17 +287,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<td><span class="badge badge-danger">999</span></td>
 							</tr>
 						</tbody>
-					  </table>                    
+					  </table>
 				</div>
 				<div class="col-md-6">
 				  <p>Easily highlight new or unread items with the <code>.badge</code> class</p>
-					<div class="list-group list-group-alternate"> 
-						<a href="#" class="list-group-item"><span class="badge">201</span> <i class="ti ti-email"></i> Inbox </a> 
-						<a href="#" class="list-group-item"><span class="badge badge-primary">5021</span> <i class="ti ti-eye"></i> Profile visits </a> 
-						<a href="#" class="list-group-item"><span class="badge">14</span> <i class="ti ti-headphone-alt"></i> Call </a> 
-						<a href="#" class="list-group-item"><span class="badge">20</span> <i class="ti ti-comments"></i> Messages </a> 
-						<a href="#" class="list-group-item"><span class="badge badge-warning">14</span> <i class="ti ti-bookmark"></i> Bookmarks </a> 
-						<a href="#" class="list-group-item"><span class="badge badge-danger">30</span> <i class="ti ti-bell"></i> Notifications </a> 
+					<div class="list-group list-group-alternate">
+						<a href="#" class="list-group-item"><span class="badge">201</span> <i class="ti ti-email"></i> Inbox </a>
+						<a href="#" class="list-group-item"><span class="badge badge-primary">5021</span> <i class="ti ti-eye"></i> Profile visits </a>
+						<a href="#" class="list-group-item"><span class="badge">14</span> <i class="ti ti-headphone-alt"></i> Call </a>
+						<a href="#" class="list-group-item"><span class="badge">20</span> <i class="ti ti-comments"></i> Messages </a>
+						<a href="#" class="list-group-item"><span class="badge badge-warning">14</span> <i class="ti ti-bookmark"></i> Bookmarks </a>
+						<a href="#" class="list-group-item"><span class="badge badge-danger">30</span> <i class="ti ti-bell"></i> Notifications </a>
 					</div>
 			   </div>
 			   <div class="clearfix"> </div>
@@ -486,7 +486,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </tr>
               </tbody>
             </table>
-          </div>	
+          </div>
 		  <hr class="bs-docs-separator">
           <p>Add any of the following classes to the <code>.table</code> base class.</p>
           <p>Adds zebra-striping to any table row within the <code>&lt;tbody&gt;</code> via the <code>:nth-child</code> CSS selector (not available in IE7-8).</p>
@@ -600,11 +600,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="col-md-6 footer-left">
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="typography.html">Shortcodes</a></li>
-					<li><a href="gallery.html">Gallery</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="index.php">Home</a></li>
+					<li><a href="about.php">About</a></li>
+					<li><a href="typography.php">Shortcodes</a></li>
+					<li><a href="gallery.php">Gallery</a></li>
+					<li><a href="contact.php">Contact</a></li>
 				</ul>
 				<form>
 					<input type="text" placeholder="Email" required="">
@@ -626,7 +626,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h3>Book Info</h3>
 				<p>Proin eget ipsum ultrices, aliquet velit eget, tempus tortor. Phasellus non velit sit amet diam faucibus molestie tincidunt efficitur nisi.</p>
 			</div>
-			<div class="clearfix"> </div>	
+			<div class="clearfix"> </div>
 		</div>
 		<!-- //container -->
 	</div>
@@ -649,7 +649,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
-			
+
 		</div>
 		<!-- //container -->
 <script type="text/javascript">
@@ -659,7 +659,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				containerID: 'toTop', // fading element id
 				containerHoverID: 'toTopHover', // fading element hover id
 				scrollSpeed: 1200,
-				easingType: 'linear' 
+				easingType: 'linear'
 				};
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });

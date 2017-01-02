@@ -13,7 +13,6 @@ class Model {
         $dbconfig['dbname'] = $GLOBALS['config']['dbname'];
         $dbconfig['port'] = $GLOBALS['config']['port'];
         $dbconfig['charset'] = $GLOBALS['config']['charset'];
-
         $this->db = new Mysql($dbconfig);
         $this->table = $GLOBALS['config']['prefix'] . $table;
         $this->getFields();

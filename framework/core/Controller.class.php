@@ -13,7 +13,7 @@ class BaseController {
             header("Location:$url");
         }
         else {
-            include(CURR_VIEW_PATH . "message.html");
+            include(CURR_VIEW_PATH . "$message.php");
         }
         exit;
     }

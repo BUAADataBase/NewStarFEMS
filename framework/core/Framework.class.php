@@ -70,7 +70,9 @@ class Framework {
 
         //Load configuration file
 
-        $GLOBALS['config'] = include CONFIG_PATH . "config.php";
+        //$GLOBALS['config'] = include CONFIG_PATH . "config.php";
+        include CONFIG_PATH . "config.php";
+
 
         //Start session
 
@@ -85,9 +87,6 @@ class Framework {
 
     private static function load($classname){
         // Here simply autoload app&rsquo;s controller and model classes
-        echo $classname;
-        echo CURR_CONTROLLER_PATH;
-        echo "<br/>";
         if (substr($classname, -10) == "Controller") {
             // Controller
             require_once(CURR_CONTROLLER_PATH . "$classname.class.php");
@@ -104,10 +103,10 @@ class Framework {
 
         $action_name = ACTION . "Action";
 
-
-        $controller = new $controller_name;
+        $controller = new $controller_name();
 
         $controller->$action_name();
+
     }
 }
 

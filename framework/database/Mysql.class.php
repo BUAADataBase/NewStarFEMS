@@ -11,15 +11,16 @@ class Mysql {
      * @param $config string configuration array
      */
     public function __construct($config = array()){
-        $host = isset($config['host'])? $config['host'] : 'localhost';
+
+        $host = isset($config['host'])? $config['host'] : '127.0.0.1';
         $user = isset($config['user'])? $config['user'] : 'root';
         $password = isset($config['password'])? $config['password'] : '123456';
         $dbname = isset($config['dbname'])? $config['dbname'] : '';
-        $port = isset($config['port'])? $config['port'] : '8080';
-        $charset = isset($config['charset'])? $config['charset'] : '8080';
+        $port = isset($config['port'])? $config['port'] : '3306';
+        $charset = isset($config['charset'])? $config['charset'] : 'utf-8';
 
-        $this->conn = mysql_connect("$host:$port",$user,$password) or die('Database connection error');
-        mysql_select_db($dbname) or die('Database selection error');
+        $this->conn = mysqli_connect("$host:$port",$user,$password, $dbname) or die('Database connection error');
+        //mysqli_select_db($dbname) or die('Database selection error');
         $this->setChar($charset);
     }
 
@@ -43,8 +44,8 @@ class Mysql {
         $this->sql = $sql;
         // Write SQL statement into log
         $str = $sql . "  [". date("Y-m-d H:i:s") ."]" . PHP_EOL;
-        file_put_contents("log.txt", $str,FILE_APPEND);
-        $result = mysql_query($this->sql,$this->conn);
+        file_put_contents("log.txt", $str, FILE_APPEND);
+        $result = mysqli_query($this->conn, $this->sql);
         if (!$result) {
             die($this->errno().':'.$this->error().'<br />Error SQL statement is '.$this->sql.'<br />');
         }
@@ -59,7 +60,7 @@ class Mysql {
      */
     public function getOne($sql){
         $result = $this->query($sql);
-        $row = mysql_fetch_row($result);
+        $row = mysqli_fetch_row($result);
         if ($row) {
             return $row[0];
         }
@@ -77,7 +78,7 @@ class Mysql {
     public function getAll($sql){
         $result = $this->query($sql);
         $list = array();
-        while ($row = mysql_fetch_assoc($result)){
+        while ($row = mysqli_fetch_assoc($result)){
             $list[] = $row;
         }
         return $list;
@@ -92,7 +93,7 @@ class Mysql {
     public function getCol($sql){
         $result = $this->query($sql);
         $list = array();
-        while ($row = mysql_fetch_row($result)) {
+        while ($row = mysqli_fetch_row($result)) {
             $list[] = $row[0];
         }
         return $list;
@@ -102,7 +103,7 @@ class Mysql {
      * Get last insert id
      */
     public function getInsertId(){
-        return mysql_insert_id($this->conn);
+        return mysqli_insert_id($this->conn);
     }
 
     /**
@@ -111,7 +112,7 @@ class Mysql {
      * @return error number
      */
     public function errno(){
-        return mysql_errno($this->conn);
+        return mysqli_errno($this->conn);
     }
 
     /**
@@ -120,7 +121,7 @@ class Mysql {
      * @return error message
      */
     public function error(){
-        return mysql_error($this->conn);
+        return mysqli_error($this->conn);
     }
 }
 

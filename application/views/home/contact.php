@@ -4,7 +4,7 @@
 <title>Contact</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Education Tutorial Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<meta name="keywords" content="Education Tutorial Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--bootstrap-->
@@ -24,7 +24,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--script-->
 <script type="text/javascript">
 			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
+				$(".scroll").click(function(event){
 					event.preventDefault();
 					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
 				});
@@ -45,23 +45,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span class="icon-bar"> </span>
 						<span class="icon-bar"> </span>
 					</button>
-					<h1><a class="navbar-brand" href="index.html">Education<br /><span>Tutorial</span></a></h1>
+					<h1><a class="navbar-brand" href="index.php">Education<br /><span>Tutorial</span></a></h1>
 					</div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right margin-top cl-effect-2">
-								<li><a href="index.html"><span data-hover="Home">Home</span></a></li>
-								<li><a href="about.html"><span data-hover="About">About</span></a></li>
-								<li><a href="typography.html"><span data-hover="Shortcodes">Shortcodes</span></a></li>
-								<li><a href="gallery.html"><span data-hover="Gallery">Gallery</span></a></li>
-								<li><a href="contact.html"><span data-hover="Contact">Contact</span></a></li>
+								<li><a href="index.php"><span data-hover="Home">Home</span></a></li>
+								<li><a href="about.php"><span data-hover="About">About</span></a></li>
+								<li><a href="typography.php"><span data-hover="Shortcodes">Shortcodes</span></a></li>
+								<li><a href="gallery.php"><span data-hover="Gallery">Gallery</span></a></li>
+								<li><a href="contact.php"><span data-hover="Contact">Contact</span></a></li>
 							</ul>
 							<div class="clearfix"> </div>
 						</div><!-- /.navbar-collapse -->
 				<!-- /.container-fluid -->
 				<div class="login-pop">
 						<div id="loginpop"><a href="#" id="loginButton"><span>Login</span></a>
-								<div id="loginBox">                
+								<div id="loginBox">
 									<form id="loginForm">
 											<fieldset id="body">
 												<fieldset>
@@ -125,11 +125,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="contact-info cf-1">
 						<div class="contact-info-text">
 							<h3>Miscellaneous information :</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus orci eget fermentum sagittis. 
-								Nullam non consequat ante, in interdum velit. Sed quis diam orci. Phasellus pulvinar hendrerit enim ut placerat. 
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus finibus orci eget fermentum sagittis.
+								Nullam non consequat ante, in interdum velit. Sed quis diam orci. Phasellus pulvinar hendrerit enim ut placerat.
 								Vivamus convallis mollis consectetur. Mauris gravida venenatis vehicula. In tempor enim in iaculis imperdiet.
 							</p>
-						</div>	
+						</div>
 						<div class="contact-info-grids">
 							<form>
 								<input type="text" placeholder="Name" required="">
@@ -151,11 +151,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="col-md-6 footer-left">
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="typography.html">Shortcodes</a></li>
-					<li><a href="gallery.html">Gallery</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="index.php">Home</a></li>
+					<li><a href="about.php">About</a></li>
+					<li><a href="typography.php">Shortcodes</a></li>
+					<li><a href="gallery.php">Gallery</a></li>
+					<li><a href="contact.php">Contact</a></li>
 				</ul>
 				<form>
 					<input type="text" placeholder="Email" required="">
@@ -177,7 +177,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h3>Book Info</h3>
 				<p>Proin eget ipsum ultrices, aliquet velit eget, tempus tortor. Phasellus non velit sit amet diam faucibus molestie tincidunt efficitur nisi.</p>
 			</div>
-			<div class="clearfix"> </div>	
+			<div class="clearfix"> </div>
 		</div>
 		<!-- //container -->
 	</div>
@@ -200,7 +200,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
-			
+
 		</div>
 		<!-- //container -->
 				<!---->
@@ -211,14 +211,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				containerID: 'toTop', // fading element id
 				containerHoverID: 'toTopHover', // fading element hover id
 				scrollSpeed: 1200,
-				easingType: 'linear' 
+				easingType: 'linear'
 				};
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
 });
 </script>
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-<!----> 
+<!---->
 	</div>
 <!--/copy-rights-->
 	</body>
