@@ -88,7 +88,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <br />
             <fieldset>
                 <label for="email">邮 箱:</label>
-                <input type="text" id="email" style="position:absolute;left:330px">
+                <input type="text" id="user_email" style="position:absolute;left:330px">
                 <label style="position:absolute;left:550px"><font color="red">此项将作为登录名，请牢记</font></label>
             </fieldset>
             <br />
@@ -148,7 +148,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     var user_name=document.getElementById("name");
                     var radios=document.getElementsByName("sex");
                     var user_age=document.getElementById("age");
-                    var user_email=document.getElementById("email");
+                    var user_email=document.getElementById("user_email");
                     var user_password=document.getElementById("u_password");
                     var user_confirm=document.getElementById("confirm");
                     var user_grade=document.getElementById("grade");
@@ -194,7 +194,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         alert("必须为11位手机号码！");
                     }
                     else{
-                        var json="{"+"\"name\":\""+user_name.value+"\",\"sex\":"+sex+",\"age\":"+user_age.value+",\"email\":\""+user_email.value+"\",\"password\":\""+user_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\"}";
+                        var json="{"+"\"name\":\""+user_name.value+"\",\"sex\":"+sex+",\"age\":"+user_age.value+",\"email\":\""+user_email.value+"\",\"password\":\""+user_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\",\"identify\":"+user_identify+"}";
                         var post_url="http://localhost:8080/index.php?c=Register&a=register";
                         ajax_send(post_url,json,success,load_error);
                     }
