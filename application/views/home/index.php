@@ -6,6 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Education Tutorial Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<?php include ("common_js.php") ?>
+</head>
+    <body>
 <?php include ("head.php") ?>
 <!-- Top Navigation -->
 <div class="banner">
@@ -229,8 +232,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="http://localhost:8080/application/views/home/contact.php">Contact</a></li>
 				</ul>
 				<form>
-					<input type="text" placeholder="Email" required="">
-					<input type="submit" value="Subscribe">
+					<input type="text" placeholder="Email" required=""/>
+					<input type="button" value="Subscribe"/>
 				</form>
 			</div>
 			<div class="col-md-3 footer-middle">
@@ -287,14 +290,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
 });
-		// function PostRegister() {
-		// 	alert("!!!!!");
-		/* 	url = "<?php echo $_SERVER['SCRIPT_URI'] ?>";*/
-		// 	alert(url);
-		// 	alert("HELLO!");
-		// };
 </script>
-
+<script type="text/javascript">
+	login_success=function(data){
+		if(data.status=="success"){
+			alert("登录成功！");
+			var url="http://localhost:8080/index.php?c=Login&a=jump";
+			window.location.href = url;
+		}
+		else{
+			alert(data.reason);
+		}
+	}
+	function login_check(){
+		var account=document.getElementById("email");
+		var pw=document.getElementById("password");
+		if(account.value==""||pw.value=="")
+			alert("用户名或密码不能为空！");
+		else if(account.value.match(/\w+@[0-9a-zA-Z]+\.[0-9a-zA-Z]+/)==""){
+            alert("邮箱格式不正确！");
+        }
+        else if(pw.value.length>16){
+            alert("密码过长！");
+        }
+        else{
+        	var json="{\"email\":\""+account.value+"\",\"password\":\""+pw.value+"\"}";
+        	json=JSON.parse(json);
+        	var url="http://localhost:8080/index.php?c=Login&a=login";
+        	ajax_send(url,json,login_success,load_error);
+        }
+	}
+</script>
 <script type="text/javascript">
 
 success = function(data) {

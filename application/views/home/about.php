@@ -45,12 +45,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span class="icon-bar"> </span>
 						<span class="icon-bar"> </span>
 					</button>
-					<h1><a class="navbar-brand" href="index.php">Education<br /><span>Tutorial</span></a></h1>
+					<h1><a class="navbar-brand" href="http://localhost:8080/index.php">Education<br /><span>Tutorial</span></a></h1>
 					</div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right margin-top cl-effect-2">
-								<li><a href="index.php"><span data-hover="Home">Home</span></a></li>
+								<li><a href="http://localhost:8080/index.php"><span data-hover="Home">Home</span></a></li>
 								<li><a href="about.php"><span data-hover="About">About</span></a></li>
 								<li><a href="typography.php"><span data-hover="Shortcodes">Shortcodes</span></a></li>
 								<li><a href="gallery.php"><span data-hover="Gallery">Gallery</span></a></li>
