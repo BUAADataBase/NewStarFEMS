@@ -3,6 +3,7 @@
 class LoginController extends BaseController {
 
     public function loginAction() {
+        isset($_SESSION) or session_start();
         $loginmailaddress = $_POST['email'];
         $loginpassword = $_POST['password'];
         $loginmodel = new LoginModel("user");
@@ -25,6 +26,7 @@ class LoginController extends BaseController {
     }
 
     public function jumpAction() {
+        isset($_SESSION) or session_start();
         if ($_SESSION['identify'] == 1) {
             $this->redirect("", "main_teacher", 1);
         }

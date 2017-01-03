@@ -287,12 +287,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
 });
-		// function PostRegister() {
-		// 	alert("!!!!!");
-		/* 	url = "<?php echo $_SERVER['SCRIPT_URI'] ?>";*/
-		// 	alert(url);
-		// 	alert("HELLO!");
-		// };
 </script>
 
 <script type="text/javascript">
