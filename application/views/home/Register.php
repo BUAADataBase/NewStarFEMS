@@ -88,7 +88,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <br />
             <fieldset>
                 <label for="email">邮 箱:</label>
-                <input type="text" id="email" style="position:absolute;left:330px">
+                <input type="text" id="user_email" style="position:absolute;left:330px">
                 <label style="position:absolute;left:550px"><font color="red">此项将作为登录名，请牢记</font></label>
             </fieldset>
             <br />
@@ -148,7 +148,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     var user_name=document.getElementById("name");
                     var radios=document.getElementsByName("sex");
                     var user_age=document.getElementById("age");
-                    var user_email=document.getElementById("email");
+                    var user_email=document.getElementById("user_email");
                     var user_password=document.getElementById("u_password");
                     var user_confirm=document.getElementById("confirm");
                     var user_grade=document.getElementById("grade");
@@ -163,43 +163,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             break;
                         }
                     }
-                    // if(i==radios.length){
-                    //     alert("请选择性别！");
-                    // }
-                    // else if(user_name.value==""){
-                    //     alert("姓名不能为空！");
-                    // }
-                    // else if(user_name.value.length>12){
-                    //     alert("姓名太长！");
-                    // }
-                    // else if(isNaN(parseInt(user_age.value))||parseInt(user_age.value)<1||parseInt(user_age.value)>100){
-                    //     alert("年龄格式不正确！");
-                    // }
-                    // else if(user_email.value.match(/\w+@[0-9a-zA-Z]+\.[0-9a-zA-Z]+/)==""){
-                    //     alert("邮箱格式不正确！");
-                    // }
-                    // else if(user_password.value==""){
-                    //     alert("密码不能为空！");
-                    // }
-                    // else if(user_password.value.length>16){
-                    //     alert("密码过长！");
-                    // }
-                    // else if(user_password.value!=user_confirm.value){
-                    //     alert("两次输入的密码不匹配！");
-                    // }
-                    // else if(isNaN(parseInt(user_tel.value))){
-                    //     alert("电话不能为非数字！");
-                    // }
-                    // else if(user_tel.value.length!=11){
-                    //     alert("必须为11位手机号码！");
-                    // }
-                    // else{
+                    if(i==radios.length){
+                        alert("请选择性别！");
+                    }
+                    else if(user_name.value==""){
+                        alert("姓名不能为空！");
+                    }
+                    else if(user_name.value.length>12){
+                        alert("姓名太长！");
+                    }
+                    else if(isNaN(parseInt(user_age.value))||parseInt(user_age.value)<1||parseInt(user_age.value)>100){
+                        alert("年龄格式不正确！");
+                    }
+                    else if(user_email.value.match(/\w+@[0-9a-zA-Z]+\.[0-9a-zA-Z]+/)==""){
+                        alert("邮箱格式不正确！");
+                    }
+                    else if(user_password.value==""){
+                        alert("密码不能为空！");
+                    }
+                    else if(user_password.value.length>16){
+                        alert("密码过长！");
+                    }
+                    else if(user_password.value!=user_confirm.value){
+                        alert("两次输入的密码不匹配！");
+                    }
+                    else if(isNaN(parseInt(user_tel.value))){
+                        alert("电话不能为非数字！");
+                    }
+                    else if(user_tel.value.length!=11){
+                        alert("必须为11位手机号码！");
+                    }
+                    else{
                         var json="{"+"\"name\":\""+user_name.value+"\",\"sex\":"+sex+",\"age\":"+user_age.value+",\"email\":\""+user_email.value+"\",\"password\":\""+user_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\"}";
-                        //alert(json);
-                        alert("\"name\":\""+user_name.value+"\"");
                         json = JSON.parse(json);
                         var post_url="http://localhost:8080/index.php?c=Register&a=register";
-                        ajax_send(post_url,json,success,load_error);
+                        ajax_send(post_url, json, success, load_error);
                     // }
                 }
             </script>
