@@ -7,8 +7,17 @@
 <meta name="keywords" content="Education Tutorial Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <?php include ("common_js.php") ?>
+<script type="text/javascript">
+getteacher_success=function(data){
+
+}
+	function get_all_teachers(){
+		var url = "http://localhost:8080/index.php?c=Main&a=getAllTeacherList";
+		ajax_send(url,0,getteacher_success,load_error);
+	}
+</script>
 </head>
-    <body>
+    <body onload="get_all_teachers()">
 <?php include ("head.php") ?>
 <!-- Top Navigation -->
 <div class="banner">
@@ -215,6 +224,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 				<div class="clearfix"> </div>
+				<ul class="pagination">
+					<li><a href="#">&laquo;</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">&raquo;</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
