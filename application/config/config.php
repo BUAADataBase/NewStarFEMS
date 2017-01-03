@@ -6,7 +6,7 @@ $GLOBALS['config'] = array(
     'user' => 'root',
     'password' => '123456',
     'dbname' => 'buaa_database',
-    'charset' => 'gb2312',
+    'charset' => 'utf8',
     'prefix' => '');
 
 
