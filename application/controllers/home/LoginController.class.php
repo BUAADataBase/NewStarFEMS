@@ -11,7 +11,7 @@ class LoginController extends BaseController {
         $uname = $loginmodel->select("uname", "mailaddress", $loginmailaddress);
         $identify = $loginmodel->select("identify", "mailaddress", $loginmailaddress);
         if ($uid == false) {
-            echo json_encode(array("status" => "failed"));
+            echo json_encode(array("status" => "failed", "reason" => "该用户不存在"));
         }
         else if ($password == $loginpassword) {
             $_SESSION['uid'] = $uid;
@@ -20,12 +20,12 @@ class LoginController extends BaseController {
             echo json_encode(array("status" => "success"));
         }
         else {
-            echo json_encode(array("status" => "failed"));
+            echo json_encode(array("status" => "failed", "reason" => "密码错误，请重新输入"));
         }
     }
 
     public function jumpAction() {
-        if ($_SESSION['identify'] = "teacher") {
+        if ($_SESSION['identify'] == 1) {
             $this->redirect("", "main_teacher", 1);
         }
         else {

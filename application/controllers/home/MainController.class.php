@@ -85,8 +85,9 @@ class MainController extends BaseController {
     }
 
     public getTeacherListbyCourseAction() {
+        $cid = $_POST['courseid'];
         $mainmodel = new MainModel("teachcourse");
-
+        $list = $mainmodel->selectallbycourse();
     }
 
     public getTeacherCourseAction() {
