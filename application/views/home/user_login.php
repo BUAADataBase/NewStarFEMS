@@ -26,7 +26,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--/hover-grids-->
 <script type="text/javascript" src="http://localhost:8080/application/views/home/js/move-top.js"></script>
 <script type="text/javascript" src="http://localhost:8080/application/views/home/js/easing.js"></script>
-<script type="text/javascript" src="http://localhost:8080/application/views/home/js/common.js"></script>
 <!--script-->
 <script type="text/javascript">
             jQuery(document).ready(function($) {
@@ -36,20 +35,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 });
             });
 </script>
-<script type="text/javascript">
-getname_success=function(data){
-    var user_name=$("p").text();
-    alert(user_name[0]);
-    $("welcome_user").text("欢迎，"+data.name);
-}
-    function get_uname(){
-        var url="http://localhost:8080/index.php?c=Main&a=getname";
-        ajax_send(url,0,getname_success,load_error);
-    }
-</script>
 <!--/script-->
 </head>
-    <body  onload="get_uname()">
+    <body>
 <!--header-->
         <div class="header" id="home">
             <nav class="navbar navbar-default">
@@ -62,17 +50,17 @@ getname_success=function(data){
                         <span class="icon-bar"> </span>
                         <span class="icon-bar"> </span>
                     </button>
-                    <h1><a class="navbar-brand" href="http://localhost:8080/index.php">Education<br /><span>Tutorial</span></a></h1>
+                    <h1><a class="navbar-brand" href="http://localhost:8080/application/views/home/index.html">Education<br /><span>Tutorial</span></a></h1>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right margin-top cl-effect-2">
-                                <li><p id="welcome_user" style="position:absolute;left:-150px;top:23px"><font color="white">欢迎，xxx</font></p></li>
-                                <li><a href="http://localhost:8080/index.php"><span data-hover="first_page">首页</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/about.php"><span data-hover="choose_course">选课</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/typography.php"><span data-hover="course">已选课程</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/gallery.php"><span data-hover="blog">博客</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/contact.php"><span data-hover="information">个人信息</span></a></li>
+                                <li><p style="position:absolute;left:-150px;top:23px"><font color="white">欢迎，xxx</font></p></li>
+                                <li><a href="http://localhost:8080/application/views/home/index.html"><span data-hover="first_page">首页</span></a></li>
+                                <li><a href="http://localhost:8080/application/views/home/about.html"><span data-hover="choose_course">选课</span></a></li>
+                                <li><a href="http://localhost:8080/application/views/home/typography.html"><span data-hover="course">已选课程</span></a></li>
+                                <li><a href="http://localhost:8080/application/views/home/gallery.html"><span data-hover="blog">博客</span></a></li>
+                                <li><a href="http://localhost:8080/application/views/home/contact.html"><span data-hover="information">个人信息</span></a></li>
                             </ul>
                             <div class="clearfix"> </div>
                         </div><!-- /.navbar-collapse -->

@@ -135,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <input input type="button" id="register" value="学生注册" style="position:absolute;left:500px" onclick="register_check(0)">
             <input input type="button" id="register" value="老师注册" style="position:absolute;left:800px" onclick="register_check(1)">
             <script type="text/javascript">
-                success=function(data){
+                sucess=function(data){
                     if(data.status=="sucess"){
                         alert("成功！");
                         url="";
@@ -197,7 +197,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         var json="{"+"\"name\":\""+user_name.value+"\",\"sex\":"+sex+",\"age\":"+user_age.value+",\"email\":\""+user_email.value+"\",\"password\":\""+user_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\",\"identify\":"+user_identify+"}";
                         json = JSON.parse(json);
                         var post_url="http://localhost:8080/index.php?c=Register&a=register";
-                        ajax_send(post_url, json, success, load_error);
+                        ajax_send(post_url,json,success,load_error);
                     }
                 }
             </script>
@@ -275,6 +275,56 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 */
         $().UItoTop({ easingType: 'easeOutQuart' });
 });
+</script>
+<script type="text/javascript">
+    success=function(data){
+        if(data.status=="sucess"){
+            alert("登录成功！");
+            var url="http://localhost:8080/index.php?c=Login&a=jump";
+            window.location.href = url;
+        }
+        else{
+            alert(data.reason);
+        }
+    }
+    function login_check(){
+        var account=document.getElementById("email");
+        var pw=document.getElementById("password");
+        if(account.value==""||pw.value=="")
+            alert("用户名或密码不能为空！");
+        else if(user_email.value.match(/\w+@[0-9a-zA-Z]+\.[0-9a-zA-Z]+/)==""){
+            alert("邮箱格式不正确！");
+        }
+        else if(user_password.value.length>16){
+            alert("密码过长！");
+        }
+        else{
+            var json="{\"email\":\""+account.value+"\",\"password\":\""+pw.value+"\"}";
+            json=JSON.parse(json);
+            var url="http://localhost:8080/index.php?c=Login&a=login";
+            ajax_send(url,json,success,load_error);
+        }
+    }
+</script>
+<script type="text/javascript">
+
+success = function(data) {
+    if (data.status == "success") {
+        url = "http://localhost:8080/index.php?c=Register&a=jump";
+        window.location.href = url;
+    }
+    else {
+        alert("请先退出登录再进行注册！");
+    }
+}
+
+function PostRegister() {
+    url = "http://localhost:8080/index.php?c=Register&a=judge";
+    ajax_send(url, 0, success, load_error);
+};
+
+
+
 </script>
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!---->

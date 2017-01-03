@@ -113,12 +113,6 @@
                 */
         $().UItoTop({ easingType: 'easeOutQuart' });
 });
-        // function PostRegister() {
-        //  alert("!!!!!");
-        //  url = "<?php echo $_SERVER['SCRIPT_URI'] ?>";
-        //  alert(url);
-        //  alert("HELLO!");
-        // };
 </script>
 
 
