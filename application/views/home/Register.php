@@ -190,7 +190,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     else if(isNaN(parseInt(user_tel.value))){
                         alert("电话不能为非数字！");
                     }
-                    else if(parseInt(user_tel.value).length!=11){
+                    else if(user_tel.value.length!=11){
                         alert("必须为11位手机号码！");
                     }
                     else{
