@@ -426,6 +426,39 @@ ul.callbacks_tabs.callbacks1_tabs {
     float: right;
 	  margin-top: 0em;
 }
+#profileForm{
+   width: 1000px;
+  background: #fff;
+  border: 1px solid #d6d6d6;
+  height: 800px;
+}
+#profileForm fieldset {
+    margin:0 0 15px 0;
+    display:block;
+    border:0;
+    padding:0;
+}
+#profileForm #profile {
+  width: auto;
+  float: left;
+  background:#232428;
+  color: #fff;
+  font-size: 0.8725em;
+  padding: 7px 20px;
+  border: none;
+  margin: 0 12px 0 0;
+  cursor: pointer;
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -o-transition: all .5s;
+  outline:none;
+  text-transform: uppercase;
+
+}
+#profileForm #profile:hover{
+     background:#476bba;
+}
 i.arrow {
     font-size: 0.9em;
   color: #34353a;
@@ -474,7 +507,7 @@ i.arrow {
     cursor:pointer;
     width: 120px;
     position: absolute;
-    left: -50px;
+    left:-50px;
 }
 #registerForm{
    width: 1000px;
