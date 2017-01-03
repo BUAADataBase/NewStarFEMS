@@ -331,7 +331,6 @@ getname_success=function(data){
                             ident_goodcourse=1;
                         }
                         var json="{"+"\"uname\":\""+user_name.value+"\",\"age\":\""+user_age.value+"\",\"old_password\":\""+old_password.value+"\",\"new_password\":\""+new_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\",\"pw_identify\":"+ident_pw+",\"chinese\":"+week_chinese_check+",\"math\":"+week_math_check+",\"english\":"+week_english_check+",\"physics\":"+week_physics_check+",\"chemistry\":"+week_chemistry_check+",\"biology\":"+week_biology_check+",\"teachcourse_identify\":"+ident_course+",\"goodcourse\":\""+course_str+"\",\"course_identify\":"+ident_goodcourse+",\"profile\":\""+user_profile.value+"\"}";
-                        alert(json);
                         json = JSON.parse(json);
                         var post_url="http://localhost:8080/index.php?c=Profile&a=editTeacherProfile";
                         ajax_send(post_url,json,Profile_success,load_error);
