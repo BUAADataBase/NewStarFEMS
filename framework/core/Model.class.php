@@ -96,7 +96,7 @@ class Model {
         $sql = "UPDATE `{$this->table}` SET {$uplist} WHERE {$where}";
         if ($this->db->query($sql)) {
             // If succeed, return the count of affected rows
-            if ($rows = mysql_affected_rows()) {
+            if ($rows = mysqli_affected_rows($this->db->getConn())) {
                 // Has count of affected rows
                 return $rows;
             }
@@ -132,7 +132,7 @@ class Model {
         $sql = "DELETE FROM `{$this->table}` WHERE $where";
         if ($this->db->query($sql)) {
             // If succeed, return the count of affected rows
-            if ($rows = mysql_affected_rows()) {
+            if ($rows = mysqli_affected_rows($this->db->getConn())) {
                 // Has count of affected rows
                 return $rows;
             } else {

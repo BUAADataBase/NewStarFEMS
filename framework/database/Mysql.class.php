@@ -123,6 +123,10 @@ class Mysql {
     public function error(){
         return mysqli_error($this->conn);
     }
+
+    public function getConn() {
+        return $this->conn;
+    }
 }
 
 ?>

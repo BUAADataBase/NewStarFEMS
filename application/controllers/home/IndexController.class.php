@@ -10,7 +10,7 @@ class IndexController extends BaseController{
         isset($_SESSION) or session_start();
         // Load View template
         if (isset($_SESSION['uid'])) {
-            if ($_SESSION['identify'] == "teacher") {
+            if ($_SESSION['identify'] == 1) {
                 include (CURR_VIEW_PATH . "main_teacher.php");
             }
             else {

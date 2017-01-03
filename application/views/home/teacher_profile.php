@@ -70,7 +70,7 @@ getname_success=function(data){
                                 <li><a href="http://localhost:8080/application/views/home/about.php"><span data-hover="choose_course">选课</span></a></li>
                                 <li><a href="http://localhost:8080/application/views/home/typography.php"><span data-hover="course">已选课程</span></a></li>
                                 <li><a href="http://localhost:8080/application/views/home/gallery.php"><span data-hover="blog">博客</span></a></li>
-                                <li><a href="http://localhost:8080/index.php?c=Profile&a=jump"><span data-hover="information">个人信息</span></a></li>
+                                <li><a href="http://localhost:8080/application/views/home/contact.php"><span data-hover="information">个人信息</span></a></li>
                             </ul>
                             <div class="clearfix"> </div>
                         </div><!-- /.navbar-collapse -->
@@ -152,18 +152,10 @@ getname_success=function(data){
                 <label>年 级:</label>
                 <select id="grade" style="position:absolute;left:330px">
                     <option value=""></option>
-                    <option value="小学一年级">小学一年级</option>
-                    <option value="小学二年级">小学二年级</option>
-                    <option value="小学三年级">小学三年级</option>
-                    <option value="小学四年级">小学四年级</option>
-                    <option value="小学五年级">小学五年级</option>
-                    <option value="小学六年级">小学六年级</option>
-                    <option value="初中一年级">初中一年级</option>
-                    <option value="初中二年级">初中二年级</option>
-                    <option value="初中三年级">初中三年级</option>
-                    <option value="高中一年级">高中一年级</option>
-                    <option value="高中二年级">高中二年级</option>
-                    <option value="高中三年级">高中三年级</option>
+                    <option value="大学一年级">大学一年级</option>
+                    <option value="大学二年级">大学二年级</option>
+                    <option value="大学三年级">大学三年级</option>
+                    <option value="大学四年级">大学四年级</option>
                 </select>
             </fieldset>
             <br />
@@ -185,7 +177,18 @@ getname_success=function(data){
             <br />
             <br />
             <fieldset>
-                <label>薄弱科目:</label>
+                <label>擅长科目:</label>
+                <label for="good_chinese" style="position:absolute;left:350px"><input type="checkbox" id="good_chinese" style="position:absolute;left:-15px;">语文</label>
+                <label for="good_math" style="position:absolute;left:400px"><input type="checkbox" id="good_math" style="position:absolute;left:-15px;">数学</label>
+                <label for="good_english" style="position:absolute;left:450px"><input type="checkbox" id="good_english" style="position:absolute;left:-15px;">英语</label>
+                <label for="good_physics" style="position:absolute;left:500px"><input type="checkbox" id="good_physics" style="position:absolute;left:-15px;">物理</label>
+                <label for="good_chemistry" style="position:absolute;left:550px"><input type="checkbox" id="good_chemistry" style="position:absolute;left:-15px;">化学</label>
+                <label for="good_biology" style="position:absolute;left:600px"><input type="checkbox" id="good_biology" style="position:absolute;left:-15px;">生物</label>
+                <label for="good_noedit" style="position:absolute;left:650px"><input type="checkbox" id="good_noedit" style="position:absolute;left:-15px;">不修改</label>
+            </fieldset>
+            <br />
+            <fieldset>
+                <label>教学科目:</label>
                 <label for="week_chinese" style="position:absolute;left:350px"><input type="checkbox" id="week_chinese" style="position:absolute;left:-15px;">语文</label>
                 <label for="week_math" style="position:absolute;left:400px"><input type="checkbox" id="week_math" style="position:absolute;left:-15px;">数学</label>
                 <label for="week_english" style="position:absolute;left:450px"><input type="checkbox" id="week_english" style="position:absolute;left:-15px;">英语</label>
@@ -196,7 +199,7 @@ getname_success=function(data){
 
             </fieldset>
             <br />
-            <input type="button" id="profile" value="修改" style="position:absolute;" onclick="Profile_check_student(0)">
+            <input type="button" id="profile" value="修改" style="position:absolute;" onclick="Profile_check_teacher()">
             <script type="text/javascript">
                 logout_success=function(data){
                     if(data.status=="success"){
@@ -219,7 +222,7 @@ getname_success=function(data){
                         alert(data.reason);
                     }
                 }
-                function Profile_check_student(par){
+                function Profile_check_teacher(){
                     var user_name=document.getElementById("name");
                     var user_age=document.getElementById("age");
                     var old_password=document.getElementById("u_old_password");
@@ -229,17 +232,31 @@ getname_success=function(data){
                     var user_school=document.getElementById("school");
                     var user_tel=document.getElementById("tel");
                     var user_profile=document.getElementById("person_profile");
+
+                    var good_chinese=document.getElementById("good_chinese");
+                    var good_math=document.getElementById("good_math");
+                    var good_english=document.getElementById("good_english");
+                    var good_physics=document.getElementById("good_physics");
+                    var good_chemistry=document.getElementById("good_chemistry");
+                    var good_biology=document.getElementById("good_biology");
+                    var good_noedit=document.getElementById("good_noedit");
+
                     var week_chinese=document.getElementById("week_chinese");
+                    var week_chinese_check=week_chinese.checked?1:0;
                     var week_math=document.getElementById("week_math");
+                    var week_math_check=week_math.checked?1:0;
                     var week_english=document.getElementById("week_english");
+                    var week_english_check=week_english.checked?1:0;
                     var week_physics=document.getElementById("week_physics");
+                    var week_physics_check=week_physics.checked?1:0;
                     var week_chemistry=document.getElementById("week_chemistry");
+                    var week_chemistry_check=week_chemistry.checked?1:0;
                     var week_biology=document.getElementById("week_biology");
+                    var week_biology_check=week_biology.checked?1:0;
                     var week_noedit=document.getElementById("week_noedit");
-                    var user_profile=document.getElementById("person_profile");
-                    var user_identify=par;
                     var ident_pw;
                     var ident_course;
+                    var ident_goodcourse;
                     var course_str="";
                     if(!(old_password.value==""&&new_password.value==""&&user_confirm.value=="")){
                         if(old_password.value!=""&&new_password.value!=""&&user_confirm.value!=""){
@@ -278,33 +295,45 @@ getname_success=function(data){
                     else if(user_profile.value.length>100){
                         alert("简介太长！");
                     }
+                    else if(!good_chinese.checked&&!good_math.checked&&!good_english.checked&&!good_physics.checked&&!good_chemistry.checked&&!good_biology.checked&&!good_noedit.checked){
+                        alert("擅长科目至少选择一项！");
+                    }
+                    else if(good_noedit.checked&&(good_chinese.checked||good_math.checked||good_english.checked||good_physics.checked||good_chemistry.checked||good_biology.checked)){
+                        alert("擅长科目选项有冲突！");
+                    }
                     else if(!week_chinese.checked&&!week_math.checked&&!week_english.checked&&!week_physics.checked&&!week_chemistry.checked&&!week_biology.checked&&!week_noedit.checked){
-                        alert("薄弱科目至少选择一项！");
+                        alert("教学科目至少选择一项！");
                     }
                     else if(week_noedit.checked&&(week_chinese.checked||week_math.checked||week_english.checked||week_physics.checked||week_chemistry.checked||week_biology.checked)){
-                        alert("薄弱科目选项有冲突！");
+                        alert("教学科目选项有冲突！");
                     }
                     else{
                         if(week_noedit.checked)
                             ident_course=0;
                         else{
-                            if(week_chinese.checked)
-                                course_str+="语文 ";
-                            if(week_math.checked)
-                                course_str+="数学 ";
-                            if(week_english.checked)
-                                course_str+="英语 ";
-                            if(week_physics.checked)
-                                course_str+="物理 ";
-                            if(week_chemistry.checked)
-                                course_str+="化学 ";
-                            if(week_biology.checked)
-                                course_str+="生物 ";
                             ident_course=1;
                         }
-                        var json="{"+"\"uname\":\""+user_name.value+"\",\"age\":\""+user_age.value+"\",\"old_password\":\""+old_password.value+"\",\"new_password\":\""+new_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\",\"pw_identify\":"+ident_pw+",\"weakcourse\":\""+course_str+"\",\"course_identify\":"+ident_course+",\"profile\":\""+user_profile.value+"\"}";
+                        if(good_noedit.checked)
+                            ident_goodcourse=0;
+                        else{
+                            if(good_chinese.checked)
+                                course_str+="语文 ";
+                            if(good_math.checked)
+                                course_str+="数学 ";
+                            if(good_english.checked)
+                                course_str+="英语 ";
+                            if(good_physics.checked)
+                                course_str+="物理 ";
+                            if(good_chemistry.checked)
+                                course_str+="化学 ";
+                            if(good_biology.checked)
+                                course_str+="生物 ";
+                            ident_goodcourse=1;
+                        }
+                        var json="{"+"\"uname\":\""+user_name.value+"\",\"age\":\""+user_age.value+"\",\"old_password\":\""+old_password.value+"\",\"new_password\":\""+new_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\",\"pw_identify\":"+ident_pw+",\"chinese\":"+week_chinese_check+",\"math\":"+week_math_check+",\"english\":"+week_english_check+",\"physics\":"+week_physics_check+",\"chemistry\":"+week_chemistry_check+",\"biology\":"+week_biology_check+",\"teachcourse_identify\":"+ident_course+",\"goodcourse\":\""+course_str+"\",\"course_identify\":"+ident_goodcourse+",\"profile\":\""+user_profile.value+"\"}";
+                        alert(json);
                         json = JSON.parse(json);
-                        var post_url="http://localhost:8080/index.php?c=Profile&a=editStudentProfile";
+                        var post_url="http://localhost:8080/index.php?c=Profile&a=editTeacherProfile";
                         ajax_send(post_url,json,Profile_success,load_error);
                     }
                 }
