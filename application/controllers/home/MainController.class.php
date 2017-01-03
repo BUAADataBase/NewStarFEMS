@@ -3,7 +3,7 @@
 class MainController extends BaseController {
 
     public function jumpAction() {
-        if ($_SESSION['identify'] = "teacher") {
+        if ($_SESSION['identify'] == 1) {
             $this->redirect("", "main_teacher", 1);
         }
         else {
@@ -13,6 +13,7 @@ class MainController extends BaseController {
     }
 
     public function getnameAction() {
+        isset($_SESSION) or session_start();
         echo json_encode(array("name" => $_SESSION['uname']));
     }
 
@@ -66,7 +67,7 @@ class MainController extends BaseController {
      *         "status" => "success" or "failed".
      * FUNCTION: 获取所有老师的uid和uname.
      */
-    public getAllTeacherListAction() {
+    public function getAllTeacherListAction() {
         $mainmodel = new MainModel("user");
         $list = $mainmodel->selectallbyitem(1);
         if (count($list) == 0) {
@@ -84,13 +85,14 @@ class MainController extends BaseController {
         echo json_encode($result);
     }
 
-    public getTeacherListbyCourseAction() {
+    public function getTeacherListbyCourseAction() {
         $cid = $_POST['courseid'];
         $mainmodel = new MainModel("teachcourse");
         $list = $mainmodel->selectallbycourse();
+
     }
 
-    public getTeacherCourseAction() {
+    public function getTeacherCourseAction() {
         $teacherid = $_POST['uid'];
         $mainmodel = new MainModel("teachcourse");
     }

@@ -76,7 +76,7 @@ getname_success=function(data){
                         </div><!-- /.navbar-collapse -->
                 <!-- /.container-fluid -->
                 <div class="login-pop">
-                        <div id="loginpop"><a href="#" id="logoutButton"><span>Login out</span></a>
+                        <div id="loginpop"><a href="#" id="logoutButton on" onclick="Logout()"><span>Login out</span></a>
                         </div>
                         </div><script src="http://localhost:8080/application/views/home/js/menu_jquery.js"></script>
                         </div>
@@ -116,6 +116,17 @@ getname_success=function(data){
             </div>
     </div>
 </div>
+
+<script type="text/javascript">
+logout_success = function(data) {
+    var url = "http://localhost:8080/index.php";
+    window.location.href = url;
+}
+function Logout() {
+    var url = "http://localhost:8080/index.php?c=Logout&a=logout";
+    ajax_send(url, 0, logout_success, load_error);
+};
+</script>
 <!--\testmonials-->
 <!--specfication-->
 <?php include ("foot.php") ?>
