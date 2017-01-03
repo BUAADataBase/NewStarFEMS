@@ -3,7 +3,7 @@
 class IndexController extends BaseController{
 
     public function mainAction(){
-        include(CURR_VIEW_PATH . "main.html");
+        include(CURR_VIEW_PATH . "main.php");
         // Load Captcha class
         // $this->loader->library("Captcha");
         // $captcha = new Captcha;
@@ -18,7 +18,12 @@ class IndexController extends BaseController{
         //$users = $userModel->getUsers();
         // Load View template
         if (isset($_SESSION['uid'])) {
-            include (CURR_VIEW_PATH . "main.php");
+            if ($_SESSION['identify'] == "teacher") {
+                include (CURR_VIEW_PATH . "main_teacher.php");
+            }
+            else {
+                include (CURR_VIEW_PATH . "main_student.php");
+            }
         }
         else {
             include(CURR_VIEW_PATH . "index.php");
@@ -27,15 +32,15 @@ class IndexController extends BaseController{
     }
 
     public function menuAction(){
-        include(CURR_VIEW_PATH . "menu.html");
+        include(CURR_VIEW_PATH . "menu.php");
     }
 
     public function dragAction(){
-        include(CURR_VIEW_PATH . "drag.html");
+        include(CURR_VIEW_PATH . "drag.php");
     }
 
     public function topAction(){
-        include(CURR_VIEW_PATH . "top.html");
+        include(CURR_VIEW_PATH . "top.php");
     }
 }
 
