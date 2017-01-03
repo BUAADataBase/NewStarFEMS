@@ -215,7 +215,7 @@ getname_success=function(data){
                         }
                         else{
                             var url="http://localhost:8080/index.php?c=Main&a=jump";
-                            window.location.href="http://localhost:8080/index.php";
+                            window.location.href=url;
                         }
                     }
                     else{
