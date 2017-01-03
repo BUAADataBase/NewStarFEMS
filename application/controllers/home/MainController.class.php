@@ -98,6 +98,51 @@ class MainController extends BaseController {
         $result = $mainmodel->selectallbyuid($teacherid);
         echo json_encode($result);
     }
+
+    public function getTeacherListbyCourseIntenAction() {
+        $cid = $_POST['courseid'];
+        $num = $_POST['number'];
+        $max = $_POST['max'];
+        $mainmodel = new MainModel("teachcourse");
+        $result = $mainmodel->selectallbycourse($cid);
+        $length = count($result);
+        if ($length < $max * $num - $max + 1) {
+            $result = array();
+        }
+        else if ($length >= $max * $num - $max + 1 && $length <= $max * $num) {
+            $result = array_slice($result, $max * $num - $max, $length - $max * $num + $max);
+        }
+        else {
+            $result = array_slice($result, $max * $num - $max, $max);
+        }
+        $newresult = array (
+            "teacherlist" => $result,
+            "length" => $length
+            );
+        echo json_encode($newresult);
+    }
+
+    public function getTeacherCourseIntenAction() {
+        $teacherid = $_POST['uid'];
+        $num = $_POST['number'];
+        $mainmodel = new MainModel("teachcourse");
+        $result = $mainmodel->selectallbyuid($teacherid);
+        $length = count($result);
+        if ($length < $max * $num - $max + 1) {
+            $result = array();
+        }
+        else if ($length >= $max * $num - $max + 1 && $length <= $max * $num) {
+            $result = array_slice($result, $max * $num - $max, $length - $max * $num + $max);
+        }
+        else {
+            $result = array_slice($result, $max * $num - $max, $max);
+        }
+        $newresult = array (
+            "courselist" => $result,
+            "length" => $length
+            );
+        echo json_encode($newresult);
+    }
 }
 
 
