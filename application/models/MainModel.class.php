@@ -17,7 +17,10 @@ class MainModel extends Model {
         return $this->db->getAll($sql);
     }
 
-
+    public function selectallbyuid($uid) {
+        $sql = "select cid, cname from $this->table, course where uid = $uid and course.cid = $this->table.cid";
+        return $this->db->getAll($sql);
+    }
 
 }
 

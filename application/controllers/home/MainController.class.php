@@ -88,13 +88,15 @@ class MainController extends BaseController {
     public function getTeacherListbyCourseAction() {
         $cid = $_POST['courseid'];
         $mainmodel = new MainModel("teachcourse");
-        $list = $mainmodel->selectallbycourse();
-
+        $result = $mainmodel->selectallbycourse($cid);
+        echo json_encode($result);
     }
 
     public function getTeacherCourseAction() {
         $teacherid = $_POST['uid'];
         $mainmodel = new MainModel("teachcourse");
+        $result = $mainmodel->selectallbyuid($teacherid);
+        echo json_encode($result);
     }
 }
 
