@@ -201,10 +201,22 @@ getname_success=function(data){
             <br />
             <input type="button" id="profile" value="修改" style="position:absolute;" onclick="Profile_check_teacher()">
             <script type="text/javascript">
+                logout_success=function(data){
+                    if(data.status=="success"){
+                        window.location.href="http://localhost:8080/index.php";
+                    }
+                }
                 success=function(data){
                     if(data.status=="success"){
                         alert("修改成功！");
-                        url="";
+                        if(data.passwordmodify=="yes"){
+                            var url="http://localhost:8080/index.php?c=Logout&a=logout";
+                            ajax_send(url,0,logout_success,load_error);
+                        }
+                        else{
+                            var url="http://localhost:8080/index.php?c=Main&a=jump";
+                            window.location.href="http://localhost:8080/index.php";
+                        }
                     }
                     else{
                         alert(data.reason);
