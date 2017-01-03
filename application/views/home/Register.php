@@ -194,11 +194,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         alert("必须为11位手机号码！");
                     }
                     else{
-                        var json="{"+"\"name\":\""+user_name.value+"\",\"sex\":"+sex+",\"age\":"+user_age.value+",\"email\":\""+user_email.value+"\",\"password\":\""+user_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\"}";
+                        var json="{"+"\"name\":\""+user_name.value+"\",\"sex\":"+sex+",\"age\":"+user_age.value+",\"email\":\""+user_email.value+"\",\"password\":\""+user_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\",\"identify\":"+user_identify+"}";
                         json = JSON.parse(json);
                         var post_url="http://localhost:8080/index.php?c=Register&a=register";
                         ajax_send(post_url, json, success, load_error);
-                    // }
+                    }
                 }
             </script>
         </fieldset>

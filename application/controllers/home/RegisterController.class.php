@@ -33,11 +33,11 @@ class RegisterController extends BaseController{
         $registerphonenumber = $_POST['tel'];
         $registeridentify = $_POST['identify'];
         $registergrade = $_POST['grade'];
-        $nextUserID = getnextIDAction();
+        $nextUserID = $this->getnextIDAction();
 
         $registermodel = new RegisterModel("user");
         $data = $registermodel->select("mailaddress", $registermailaddress);
-        if (size($data) == 0) {
+        if (count($data) == 0) {
             $status = "success";
             $reason = "success";
             $list = array(

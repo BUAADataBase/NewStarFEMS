@@ -68,7 +68,7 @@ class MainController extends BaseController {
     public getAllTeacherListAction() {
         $mainmodel = new MainModel("user");
         $list = $mainmodel->selectallbyitem(1);
-        if (size($list) == 0) {
+        if (count($list) == 0) {
             $result = array (
                 "list" => $list,
                 "status" => "failed"
@@ -85,6 +85,7 @@ class MainController extends BaseController {
 
     public getTeacherListbyCourseAction() {
         $mainmodel = new MainModel("teachcourse");
+
     }
 
     public getTeacherCourseAction() {
