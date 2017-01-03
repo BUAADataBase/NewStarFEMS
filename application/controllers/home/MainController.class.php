@@ -89,6 +89,10 @@ class MainController extends BaseController {
         $cid = $_POST['courseid'];
         $mainmodel = new MainModel("teachcourse");
         $result = $mainmodel->selectallbycourse($cid);
+        $length = count($result);
+        $result = array (
+            "teacherlist" => $result,
+            "length" => $length);
         echo json_encode($result);
     }
 
@@ -96,6 +100,10 @@ class MainController extends BaseController {
         $teacherid = $_POST['uid'];
         $mainmodel = new MainModel("teachcourse");
         $result = $mainmodel->selectallbyuid($teacherid);
+        $length = count($result);
+        $result = array (
+            "courselist" => $result,
+            "length" => $length);
         echo json_encode($result);
     }
 
