@@ -30,7 +30,7 @@ class RegisterController extends BaseController{
         $registerage = $_POST['age'];
         $registersex = $_POST['sex'];
         $registerschool = $_POST['school'];
-        $registerphonenumber = $_POST['phonenumber'];
+        $registerphonenumber = $_POST['tel'];
         $registeridentify = $_POST['identify'];
         $registergrade = $_POST['grade'];
         $nextUserID = getnextIDAction();

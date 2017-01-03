@@ -135,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <input input type="button" id="register" value="学生注册" style="position:absolute;left:500px" onclick="register_check(0)">
             <input input type="button" id="register" value="老师注册" style="position:absolute;left:800px" onclick="register_check(1)">
             <script type="text/javascript">
-                sucess=function(data){
+                success=function(data){
                     if(data.status=="sucess"){
                         alert("成功！");
                         url="";
@@ -163,41 +163,44 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             break;
                         }
                     }
-                    if(i==radios.length){
-                        alert("请选择性别！");
-                    }
-                    else if(user_name.value==""){
-                        alert("姓名不能为空！");
-                    }
-                    else if(user_name.value.length>12){
-                        alert("姓名太长！");
-                    }
-                    else if(isNaN(parseInt(user_age.value))||parseInt(user_age.value)<1||parseInt(user_age.value)>100){
-                        alert("年龄格式不正确！");
-                    }
-                    else if(user_email.value.match(/\w+@[0-9a-zA-Z]+\.[0-9a-zA-Z]+/)==""){
-                        alert("邮箱格式不正确！");
-                    }
-                    else if(user_password.value==""){
-                        alert("密码不能为空！");
-                    }
-                    else if(user_password.value.length>16){
-                        alert("密码过长！");
-                    }
-                    else if(user_password.value!=user_confirm.value){
-                        alert("两次输入的密码不匹配！");
-                    }
-                    else if(isNaN(parseInt(user_tel.value))){
-                        alert("电话不能为非数字！");
-                    }
-                    else if(parseInt(user_tel.value).length!=11){
-                        alert("必须为11位手机号码！");
-                    }
-                    else{
+                    // if(i==radios.length){
+                    //     alert("请选择性别！");
+                    // }
+                    // else if(user_name.value==""){
+                    //     alert("姓名不能为空！");
+                    // }
+                    // else if(user_name.value.length>12){
+                    //     alert("姓名太长！");
+                    // }
+                    // else if(isNaN(parseInt(user_age.value))||parseInt(user_age.value)<1||parseInt(user_age.value)>100){
+                    //     alert("年龄格式不正确！");
+                    // }
+                    // else if(user_email.value.match(/\w+@[0-9a-zA-Z]+\.[0-9a-zA-Z]+/)==""){
+                    //     alert("邮箱格式不正确！");
+                    // }
+                    // else if(user_password.value==""){
+                    //     alert("密码不能为空！");
+                    // }
+                    // else if(user_password.value.length>16){
+                    //     alert("密码过长！");
+                    // }
+                    // else if(user_password.value!=user_confirm.value){
+                    //     alert("两次输入的密码不匹配！");
+                    // }
+                    // else if(isNaN(parseInt(user_tel.value))){
+                    //     alert("电话不能为非数字！");
+                    // }
+                    // else if(user_tel.value.length!=11){
+                    //     alert("必须为11位手机号码！");
+                    // }
+                    // else{
                         var json="{"+"\"name\":\""+user_name.value+"\",\"sex\":"+sex+",\"age\":"+user_age.value+",\"email\":\""+user_email.value+"\",\"password\":\""+user_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\"}";
+                        //alert(json);
+                        alert("\"name\":\""+user_name.value+"\"");
+                        json = JSON.parse(json);
                         var post_url="http://localhost:8080/index.php?c=Register&a=register";
                         ajax_send(post_url,json,success,load_error);
-                    }
+                    // }
                 }
             </script>
         </fieldset>
