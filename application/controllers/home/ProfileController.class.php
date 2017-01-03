@@ -24,27 +24,30 @@ class ProfileController extends BaseController {
         $profile = $_POST['profile'];
         $pw_identify = $_POST['pw_identify'];
         $course_identify = $_POST['course_identify'];
+        $oldpassword = $_POST['old_password'];
+        $newpassword = $_POST['new_password'];
         $usermodel = new ProfileModel("user");
         $profilemodel = new ProfileModel("profile");
         if ($uname != "") {
             $_SESSION['uname'] = $uname;
-            $usermodel->edit("uname", $uname);
+            $usermodel->edit("uname", $uname, $uid);
         }
         if ($age != "") {
-            $usermodel->edit("age", $age);
+            $age = (int)$age;
+            $usermodel->edit("age", $age, $uid);
         }
         if ($grade != "") {
-            $usermodel->edit("grade", $grade);
+            $usermodel->edit("grade", $grade, $uid);
         }
         if ($school != "") {
-            $usermodel->edit("school", $school);
+            $usermodel->edit("school", $school, $uid);
         }
         if ($phonenumber != "") {
-            $usermodel->edit("phonenumber", $phonenumber);
+            $usermodel->edit("phonenumber", $phonenumber, $uid);
         }
         if ($course_identify == 1) {
             if ($profilemodel->selectbyUID($uid)) {
-                $profilemodel->edit("courses", $weakcourse);
+                $profilemodel->edit("courses", $weakcourse, $uid);
             }
             else {
                 $profilemodel->insert(array("uid" => $uid, "courses" => $weakcourse));
@@ -52,7 +55,7 @@ class ProfileController extends BaseController {
         }
         if ($profile != "") {
             if ($profilemodel->selectbyUID($uid)) {
-                $profilemodel->edit("profile", $weakcourse);
+                $profilemodel->edit("introduction", $profile, $uid);
             }
             else {
                 $profilemodel->insert(array("uid" => $uid, "profile" => $profile));
@@ -61,18 +64,27 @@ class ProfileController extends BaseController {
         if ($pw_identify == 1) {
             $password = $usermodel->selectPWDbyUID($uid);
             if ($password == $oldpassword) {
-                $usermodel->edit("password", $password);
+                $usermodel->edit("password", $newpassword, $uid);
                 $result = array (
-                    "status" => "success";
-                    "reason" => "";
-                    )
+                    "status" => "success",
+                    "reason" => "",
+                    "passwordmodify" => "yes"
+                    );
             }
             else {
                 $result = array (
-                    "status" => "failed";
-                    "reason" => "Please input the correct old password to set the new password.";
-                    )
+                    "status" => "failed",
+                    "reason" => "Please input the correct old password to set the new password.",
+                    "passwordmodify" => "no"
+                    );
             }
+        }
+        else {
+            $result = array (
+                    "status" => "success",
+                    "reason" => "",
+                    "passwordmodify" => "no"
+                    );
         }
         echo json_encode($result);
     }
@@ -83,7 +95,7 @@ class ProfileController extends BaseController {
         $age = $_POST['age'];
         $grade = $_POST['grade'];
         $school = $_POST['school'];
-        $phonenumber = $_POST['phonenumber'];
+        $phonenumber = $_POST['tel'];
         $goodcourse = $_POST['goodcourse'];
         $profile = $_POST['profile'];
         $pw_identify = $_POST['pw_identify'];
@@ -93,30 +105,31 @@ class ProfileController extends BaseController {
         $chinese = $_POST['chinese'];
         $english = $_POST['english'];
         $physics = $_POST['physics'];
-        $chemisty = $_POST['chemisty'];
+        $chemistry = $_POST['chemistry'];
         $biology = $_POST['biology'];
+        $oldpassword = $_POST['old_password'];
+        $newpassword = $_POST['new_password'];
         $usermodel = new ProfileModel("user");
         $profilemodel = new ProfileModel("profile");
-        $_SESSION['uname'] = $uname;
         if ($uname != "") {
             $_SESSION['uname'] = $uname;
-            $usermodel->edit("uname", $uname);
+            $usermodel->edit("uname", $uname, $uid);
         }
         if ($age != "") {
-            $usermodel->edit("age", $age);
+            $usermodel->edit("age", $age, $uid);
         }
         if ($grade != "") {
-            $usermodel->edit("grade", $grade);
+            $usermodel->edit("grade", $grade, $uid);
         }
         if ($school != "") {
-            $usermodel->edit("school", $school);
+            $usermodel->edit("school", $school, $uid);
         }
         if ($phonenumber != "") {
-            $usermodel->edit("phonenumber", $phonenumber);
+            $usermodel->edit("phonenumber", $phonenumber, $uid);
         }
         if ($course_identify == 1) {
             if ($profilemodel->selectbyUID($uid)) {
-                $profilemodel->edit("courses", $goodcourse);
+                $profilemodel->edit("courses", $goodcourse, $uid);
             }
             else {
                 $profilemodel->insert(array("uid" => $uid, "courses" => $goodcourse));
@@ -124,16 +137,13 @@ class ProfileController extends BaseController {
         }
         if ($profile != "") {
             if ($profilemodel->selectbyUID($uid)) {
-                $profilemodel->edit("profile", $weakcourse);
+                $profilemodel->edit("introduction", $profile, $uid);
             }
             else {
                 $profilemodel->insert(array("uid" => $uid, "profile" => $profile));
             }
         }
         if ($teachcourse_identify == 1) {
-            $usermodel->deleteoldteachcourse($uid);
-        }
-        else if {
             $usermodel->deleteoldteachcourse($uid);
             if ($math == 1) {
                 $usermodel->insertnewteachcourse($uid, 1);
@@ -147,7 +157,7 @@ class ProfileController extends BaseController {
             if ($physics == 1) {
                 $usermodel->insertnewteachcourse($uid, 4);
             }
-            if ($chemisty == 1) {
+            if ($chemistry == 1) {
                 $usermodel->insertnewteachcourse($uid, 5);
             }
             if ($biology == 1) {
@@ -157,18 +167,27 @@ class ProfileController extends BaseController {
         if ($pw_identify == 1) {
             $password = $usermodel->selectPWDbyUID($uid);
             if ($password == $oldpassword) {
-                $usermodel->edit("password", $password);
+                $usermodel->edit("password", $newpassword, $uid);
                 $result = array (
-                    "status" => "success";
-                    "reason" => "";
-                    )
+                    "status" => "success",
+                    "passwordmodify" => "yes",
+                    "reason" => ""
+                    );
             }
             else {
                 $result = array (
-                    "status" => "failed";
-                    "reason" => "Please input the correct old password to set the new password.";
-                    )
+                    "status" => "failed",
+                    "reason" => "Please input the correct old password to set the new password.",
+                    "passwordmodify" => "no"
+                    );
             }
+        }
+        else {
+            $result = array (
+                    "status" => "success",
+                    "reason" => "",
+                    "passwordmodify" => "no"
+                    );
         }
         echo json_encode($result);
     }

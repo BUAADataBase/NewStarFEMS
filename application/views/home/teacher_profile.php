@@ -151,7 +151,7 @@ getname_success=function(data){
             <fieldset>
                 <label>年 级:</label>
                 <select id="grade" style="position:absolute;left:330px">
-                    <option value="空"></option>
+                    <option value=""></option>
                     <option value="大学一年级">大学一年级</option>
                     <option value="大学二年级">大学二年级</option>
                     <option value="大学三年级">大学三年级</option>
@@ -206,7 +206,7 @@ getname_success=function(data){
                         window.location.href="http://localhost:8080/index.php";
                     }
                 }
-                success=function(data){
+                Profile_success=function(data){
                     if(data.status=="success"){
                         alert("修改成功！");
                         if(data.passwordmodify=="yes"){
@@ -330,10 +330,10 @@ getname_success=function(data){
                                 course_str+="生物 ";
                             ident_goodcourse=1;
                         }
-                        var json="{"+"\"uname\":\""+user_name.value+"\",\"age\":\""+user_age.value+"\",\"old_password\":\""+old_password.value+"\",\"new_password\":\""+new_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"phonenumber\":\""+user_tel.value+"\",\"pw_identify\":"+ident_pw+"\"chinese\":"+week_chinese_check+",\"math\":"+week_math_check+",\"english\":"+week_english_check+",\"physics\":"+week_physics_check+",\"chemistry\":"+week_chemistry_check+",\"biology\":"+week_biology_check+",\"teachcourse_identify\":"+ident_course+",\"goodcourse\":\""+course_str+"\",\"course_identify\":"+ident_goodcourse+"}";
+                        var json="{"+"\"uname\":\""+user_name.value+"\",\"age\":\""+user_age.value+"\",\"old_password\":\""+old_password.value+"\",\"new_password\":\""+new_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\",\"pw_identify\":"+ident_pw+",\"chinese\":"+week_chinese_check+",\"math\":"+week_math_check+",\"english\":"+week_english_check+",\"physics\":"+week_physics_check+",\"chemistry\":"+week_chemistry_check+",\"biology\":"+week_biology_check+",\"teachcourse_identify\":"+ident_course+",\"goodcourse\":\""+course_str+"\",\"course_identify\":"+ident_goodcourse+",\"profile\":\""+user_profile.value+"\"}";
                         json = JSON.parse(json);
-                        var post_url="http://localhost:8080/index.php?c=Profile&a=editStudentProfile";
-                        ajax_send(post_url,json,success,load_error);
+                        var post_url="http://localhost:8080/index.php?c=Profile&a=editTeacherProfile";
+                        ajax_send(post_url,json,Profile_success,load_error);
                     }
                 }
             </script>

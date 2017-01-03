@@ -70,7 +70,7 @@ getname_success=function(data){
                                 <li><a href="http://localhost:8080/application/views/home/about.php"><span data-hover="choose_course">选课</span></a></li>
                                 <li><a href="http://localhost:8080/application/views/home/typography.php"><span data-hover="course">已选课程</span></a></li>
                                 <li><a href="http://localhost:8080/application/views/home/gallery.php"><span data-hover="blog">博客</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/contact.php"><span data-hover="information">个人信息</span></a></li>
+                                <li><a href="http://localhost:8080/index.php?c=Profile&a=jump"><span data-hover="information">个人信息</span></a></li>
                             </ul>
                             <div class="clearfix"> </div>
                         </div><!-- /.navbar-collapse -->

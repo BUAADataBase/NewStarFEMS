@@ -70,7 +70,7 @@ getname_success=function(data){
                                 <li><a href="http://localhost:8080/application/views/home/about.php"><span data-hover="choose_course">选课</span></a></li>
                                 <li><a href="http://localhost:8080/application/views/home/typography.php"><span data-hover="course">已选课程</span></a></li>
                                 <li><a href="http://localhost:8080/application/views/home/gallery.php"><span data-hover="blog">博客</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/contact.php"><span data-hover="information">个人信息</span></a></li>
+                                <li><a href="http://localhost:8080/index.php?c=Profile&a=jump"><span data-hover="information">个人信息</span></a></li>
                             </ul>
                             <div class="clearfix"> </div>
                         </div><!-- /.navbar-collapse -->
@@ -151,6 +151,7 @@ getname_success=function(data){
             <fieldset>
                 <label>年 级:</label>
                 <select id="grade" style="position:absolute;left:330px">
+                    <option value=""></option>
                     <option value="小学一年级">小学一年级</option>
                     <option value="小学二年级">小学二年级</option>
                     <option value="小学三年级">小学三年级</option>
@@ -195,18 +196,30 @@ getname_success=function(data){
 
             </fieldset>
             <br />
-            <input type="button" id="profile" value="修改" style="position:absolute;" onclick="register_check(0)">
+            <input type="button" id="profile" value="修改" style="position:absolute;" onclick="Profile_check_student(0)">
             <script type="text/javascript">
-                sucess=function(data){
+                logout_success=function(data){
+                    if(data.status=="success"){
+                        window.location.href="http://localhost:8080/index.php";
+                    }
+                }
+                Profile_success=function(data){
                     if(data.status=="success"){
                         alert("修改成功！");
-                        url="";
+                        if(data.passwordmodify=="yes"){
+                            var url="http://localhost:8080/index.php?c=Logout&a=logout";
+                            ajax_send(url,0,logout_success,load_error);
+                        }
+                        else{
+                            var url="http://localhost:8080/index.php?c=Main&a=jump";
+                            window.location.href=url;
+                        }
                     }
                     else{
                         alert(data.reason);
                     }
                 }
-                function register_check(par){
+                function Profile_check_student(par){
                     var user_name=document.getElementById("name");
                     var user_age=document.getElementById("age");
                     var old_password=document.getElementById("u_old_password");
@@ -223,6 +236,7 @@ getname_success=function(data){
                     var week_chemistry=document.getElementById("week_chemistry");
                     var week_biology=document.getElementById("week_biology");
                     var week_noedit=document.getElementById("week_noedit");
+                    var user_profile=document.getElementById("person_profile");
                     var user_identify=par;
                     var ident_pw;
                     var ident_course;
@@ -265,10 +279,10 @@ getname_success=function(data){
                         alert("简介太长！");
                     }
                     else if(!week_chinese.checked&&!week_math.checked&&!week_english.checked&&!week_physics.checked&&!week_chemistry.checked&&!week_biology.checked&&!week_noedit.checked){
-                        alert("擅长科目至少选择一项！");
+                        alert("薄弱科目至少选择一项！");
                     }
                     else if(week_noedit.checked&&(week_chinese.checked||week_math.checked||week_english.checked||week_physics.checked||week_chemistry.checked||week_biology.checked)){
-                        alert("擅长科目选项有冲突！");
+                        alert("薄弱科目选项有冲突！");
                     }
                     else{
                         if(week_noedit.checked)
@@ -288,10 +302,10 @@ getname_success=function(data){
                                 course_str+="生物 ";
                             ident_course=1;
                         }
-                        var json="{"+"\"name\":\""+user_name.value+"\"age\":"+user_age+",\"old_password\":\""+old_password.value+"\",\"new_password\":\""+new_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\",\"pw_identify\":"+ident_pw+"\"weekcourse\":\""+course_str+"\",course_identify\":"+ident_course+"}";
+                        var json="{"+"\"uname\":\""+user_name.value+"\",\"age\":\""+user_age.value+"\",\"old_password\":\""+old_password.value+"\",\"new_password\":\""+new_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\",\"pw_identify\":"+ident_pw+",\"weakcourse\":\""+course_str+"\",\"course_identify\":"+ident_course+",\"profile\":\""+user_profile.value+"\"}";
                         json = JSON.parse(json);
                         var post_url="http://localhost:8080/index.php?c=Profile&a=editStudentProfile";
-                        ajax_send(post_url,json,success,load_error);
+                        ajax_send(post_url,json,Profile_success,load_error);
                     }
                 }
             </script>
