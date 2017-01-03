@@ -6,35 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Education Tutorial Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--bootstrap-->
-<link href="http://localhost:8080/application/views/home/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-<!--coustom css-->
-<link href="http://localhost:8080/application/views/home/css/style.css" rel="stylesheet" type="text/css"/>
-<!--script-->
-<script src="http://localhost:8080/application/views/home/js/jquery-1.11.0.min.js"></script>
-<!-- js -->
-<script src="http://localhost:8080/application/views/home/js/bootstrap.js"></script>
-<!-- /js -->
-<!--fonts-->
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400italic,400,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!--/fonts-->
-<!--hover-girds-->
-<link rel="stylesheet" type="text/css" href="http://localhost:8080/application/views/home/css/default.css" />
-<link rel="stylesheet" type="text/css" href="http://localhost:8080/application/views/home/css/component.css" />
-<script src="http://localhost:8080/application/views/home/js/modernizr.custom.js"></script>
-<!--/hover-grids-->
-<script type="text/javascript" src="http://localhost:8080/application/views/home/js/move-top.js"></script>
-<script type="text/javascript" src="http://localhost:8080/application/views/home/js/easing.js"></script>
-<!--script-->
-<script type="text/javascript">
-            jQuery(document).ready(function($) {
-                $(".scroll").click(function(event){
-                    event.preventDefault();
-                    $('html,body').animate({scrollTop:$(this.hash).offset().top},900);
-                });
-            });
-</script>
+<?php include ("common_js.php") ?>
 <!--/script-->
 </head>
     <body>
@@ -62,21 +34,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <h3>Formal education</h3>
                      <p>Education is the process of facilitating learning. Knowledge, skills, values, beliefs, and habits of a group of people are transferred to other people, through storytelling.</p>
                     <div class="readmore">
-                    <a href="http://localhost:8080/application/views/home/about.php">Read More<i class="glyphicon glyphicon-menu-right"> </i></a>
+                    <a href="http://localhost:8080/application/views/home/about.html">Read More<i class="glyphicon glyphicon-menu-right"> </i></a>
                     </div>
                  </li>
                  <li>
                     <h3>Self-directed learning</h3>
                      <p>Learning Education is the process of facilitating learning. Knowledge, skills, values, beliefs, and habits of a group of people are transferred to other people, through storytelling.</p>
                  <div class="readmore">
-                 <a href="http://localhost:8080/application/views/home/about.php">Read More<i class="glyphicon glyphicon-menu-right"> </i></a>
+                 <a href="http://localhost:8080/application/views/home/about.html">Read More<i class="glyphicon glyphicon-menu-right"> </i></a>
                  </div>
                  </li>
                  <li>
                     <h3>Learning modalities</h3>
                      <p>Storytelling Education is the process of facilitating learning. Knowledge, skills, values, beliefs, and habits of a group of people are transferred to other people, through.</p>
                 <div class="readmore">
-                 <a href="http://localhost:8080/application/views/home/about.php">Read More<i class="glyphicon glyphicon-menu-right"> </i></a>
+                 <a href="http://localhost:8080/application/views/home/about.html">Read More<i class="glyphicon glyphicon-menu-right"> </i></a>
                  </div>
                  </li>
               </ul>
@@ -93,7 +65,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 </div>
 <div class="register">
-    <center><form id="registerForm" method="post" action="window.open("index.php")">
+    <center><form id="registerForm">
         <fieldset id="body">
             <fieldset>
                 <label for="name">姓 名:</label>
@@ -122,19 +94,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <br />
             <fieldset>
                 <label for="password">密 码:</label>
-                <input type="password" id="password" style="position:absolute;left:330px">
+                <input type="password" id="u_password" style="position:absolute;left:330px">
                 <label style="position:absolute;left:550px"><font color="red">此项将作为登录密码，请牢记</font></label>
             </fieldset>
             <br />
             <fieldset>
                 <label for="password">确 认:</label>
-                <input type="password" id="password" style="position:absolute;left:330px">
+                <input type="password" id="confirm" style="position:absolute;left:330px">
                 <label style="position:absolute;left:550px"><font color="red">请再次输入密码确认</font></label>
             </fieldset>
             <br />
             <fieldset>
                 <label>年 级:</label>
-                <select style="position:absolute;left:330px">
+                <select id="grade" style="position:absolute;left:330px">
                     <option value="小学一年级">小学一年级</option>
                     <option value="小学二年级">小学二年级</option>
                     <option value="小学三年级">小学三年级</option>
@@ -160,7 +132,74 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <input type="text" id="tel" style="position:absolute;left:330px">
             </fieldset>
             <br />
-            <input input type="submit" id="register" value="确认" style="position:absolute;left:700px">
+            <input input type="button" id="register" value="学生注册" style="position:absolute;left:500px" onclick="register_check(0)">
+            <input input type="button" id="register" value="老师注册" style="position:absolute;left:800px" onclick="register_check(1)">
+            <script type="text/javascript">
+                sucess=function(data){
+                    if(data.status=="sucess"){
+                        alert("成功！");
+                        url="";
+                    }
+                    else{
+                        alert(data.reason);
+                    }
+                }
+                function register_check(par){
+                    var user_name=document.getElementById("name");
+                    var radios=document.getElementsByName("sex");
+                    var user_age=document.getElementById("age");
+                    var user_email=document.getElementById("email");
+                    var user_password=document.getElementById("u_password");
+                    var user_confirm=document.getElementById("confirm");
+                    var user_grade=document.getElementById("grade");
+                    var user_school=document.getElementById("school");
+                    var user_tel=document.getElementById("tel");
+                    var user_identify=par;
+                    var sex;
+                    var i=0;
+                    for(i=0;i<radios.length;i++){
+                        if(radios[i].checked==true){
+                            sex=(radios[i].value=="male")?0:1;
+                            break;
+                        }
+                    }
+                    if(i==radios.length){
+                        alert("请选择性别！");
+                    }
+                    else if(user_name.value==""){
+                        alert("姓名不能为空！");
+                    }
+                    else if(user_name.value.length>12){
+                        alert("姓名太长！");
+                    }
+                    else if(isNaN(parseInt(user_age.value))||parseInt(user_age.value)<1||parseInt(user_age.value)>100){
+                        alert("年龄格式不正确！");
+                    }
+                    else if(user_email.value.match(/\w+@[0-9a-zA-Z]+\.[0-9a-zA-Z]+/)==""){
+                        alert("邮箱格式不正确！");
+                    }
+                    else if(user_password.value==""){
+                        alert("密码不能为空！");
+                    }
+                    else if(user_password.value.length>16){
+                        alert("密码过长！");
+                    }
+                    else if(user_password.value!=user_confirm.value){
+                        alert("两次输入的密码不匹配！");
+                    }
+                    else if(isNaN(parseInt(user_tel.value))){
+                        alert("电话不能为非数字！");
+                    }
+                    else if(parseInt(user_tel.value).length!=11){
+                        alert("必须为11位手机号码！");
+                    }
+                    else{
+                        var json="{"+"\"name\":\""+user_name.value+"\",\"sex\":"+sex+",\"age\":"+user_age.value+",\"email\":\""+user_email.value+"\",\"password\":\""+user_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\"}";
+                        var post_url="http://localhost:8080/index.php?c=Register&a=register";
+                        ajax_send(post_url,json,success,load_error);
+                    }
+                }
+            </script>
         </fieldset>
     </form></center>
 </div>
@@ -170,11 +209,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="col-md-6 footer-left">
                 <ul>
-                    <li><a href="http://localhost:8080/application/views/home/index.php">Home</a></li>
-                    <li><a href="http://localhost:8080/application/views/home/about.php">About</a></li>
-                    <li><a href="http://localhost:8080/application/views/home/typography.php">Shortcodes</a></li>
-                    <li><a href="http://localhost:8080/application/views/home/gallery.php">Gallery</a></li>
-                    <li><a href="http://localhost:8080/application/views/home/contact.php">Contact</a></li>
+                    <li><a href="http://localhost:8080/application/views/home/index.html">Home</a></li>
+                    <li><a href="http://localhost:8080/application/views/home/about.html">About</a></li>
+                    <li><a href="http://localhost:8080/application/views/home/typography.html">Shortcodes</a></li>
+                    <li><a href="http://localhost:8080/application/views/home/gallery.html">Gallery</a></li>
+                    <li><a href="http://localhost:8080/application/views/home/contact.html">Contact</a></li>
                 </ul>
                 <form>
                     <input type="text" placeholder="Email" required="">
