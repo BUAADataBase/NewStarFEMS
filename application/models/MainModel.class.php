@@ -3,7 +3,7 @@
 class MainModel extends Model {
 
     public function selectonebyitem($item, $uid) {
-        $sql = "select $item from $this->table where uid = $uid";
+        $sql = "select $item from $this->table where uid = '$uid'";
         return $this->db->getOne($sql);
     }
 

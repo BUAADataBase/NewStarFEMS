@@ -1,6 +1,7 @@
 <?php
 
 class LoginController extends BaseController {
+
     public function loginAction() {
         $loginmailaddress = $_POST['email'];
         $loginpassword = $_POST['password'];
@@ -30,6 +31,7 @@ class LoginController extends BaseController {
         else {
             $this->redirect("", "main_student", 1);
         }
+        //echo json_encode(array("status" => "success"));
     }
 }
 

@@ -9,6 +9,7 @@ class MainController extends BaseController {
         else {
             $this->redirect("", "main_student", 1);
         }
+        //echo json_encode(array("status" => "success"));
     }
 
     public function getnameAction() {
@@ -90,7 +91,7 @@ class MainController extends BaseController {
 
     public getTeacherCourseAction() {
         $teacherid = $_POST['uid'];
-
+        $mainmodel = new MainModel("teachcourse");
     }
 }
 
