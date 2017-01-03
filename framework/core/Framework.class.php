@@ -68,6 +68,8 @@ class Framework {
 
         require(CORE_PATH . "Model.class.php");
 
+        require(PUBLIC_PATH . "constant.php");
+
         //Load configuration file
 
         //$GLOBALS['config'] = include CONFIG_PATH . "config.php";

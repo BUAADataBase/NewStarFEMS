@@ -474,6 +474,7 @@ i.arrow {
     cursor:pointer;
     width: 120px;
     position: absolute;
+    left: -50px;
 }
 #registerForm{
    width: 1000px;
