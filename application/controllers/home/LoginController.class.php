@@ -9,7 +9,10 @@ class LoginController extends BaseController {
         $uid = $loginmodel->select("uid", "mailaddress", $loginmailaddress);
         $uname = $loginmodel->select("uname", "mailaddress", $loginmailaddress);
         $identify = $loginmodel->select("identify", "mailaddress", $loginmailaddress);
-        if ($password == $loginpassword) {
+        if ($uid == false) {
+            echo json_encode(array("status" => "failed"));
+        }
+        else if ($password == $loginpassword) {
             $_SESSION['uid'] = $uid;
             $_SESSION['uname'] = $uname;
             $_SESSION['identify'] = $identify;
