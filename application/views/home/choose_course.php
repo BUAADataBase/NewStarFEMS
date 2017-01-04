@@ -61,7 +61,8 @@ getname_success=function(data){
                 ensure = true;
             }
         }
-        teacherid = list.teacherlist[6*(currentpage-1) + no-1].uid;
+        var currentpage=document.getElementById("a11");
+        teacherid = list.teacherlist[6*(currentpage.innerHTML-1) + no-1].uid;
         alert(teacherid);
         var url = "http://localhost:8080/index.php?c=SC&a=SC";
         var json = "{\"teacherid\":"+teacherid+",\"courseid\":"+course_number+",\"period\":"+period+"}";
@@ -72,7 +73,6 @@ getname_success=function(data){
 <script type="text/javascript">
 course="";
 pages=0;
-currentpage = 1;
 course_number = 0;
 list = [];
 getname_success=function(data){
@@ -330,11 +330,11 @@ getteachersbycourse_success=function(data){
                     }
                 }
                 </script>
-                <li id="a1"><a href="#">1</a></li>
-                <li id="a2"><a href="#">2</a></li>
-                <li id="a3"><a href="#">3</a></li>
-                <li id="a4"><a href="#">4</a></li>
-                <li id="a5"><a href="#">5</a></li>
+                <li id="a1"><a id="a11" href="#">1</a></li>
+                <li id="a2"><a id="a12" href="#">2</a></li>
+                <li id="a3"><a id="a13" href="#">3</a></li>
+                <li id="a4"><a id="a14" href="#">4</a></li>
+                <li id="a5"><a id="a15" href="#">5</a></li>
                 <li id="right"><a href="#">&raquo;</a></li>
             </ul>
     </div>
