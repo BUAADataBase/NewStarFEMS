@@ -3,8 +3,8 @@
 class SelectedModel extends Model {
 
     public function selectbyuid($studentid) {
-        $sql = "select user.uid, uname, course.cid, cname, period, price from selectcourse, user, course where user.uid = selectcourse.uid_teacher and course.cid = selectcourse.cid and selectcourse.uid_student = $studentid";
-        $this->db->getAll($sql);
+        $sql = "select user.uid, uname, course.cid, cname, period, price, confirm from selectcourse, user, course where user.uid = selectcourse.uid_teacher and course.cid = selectcourse.cid and selectcourse.uid_student = $studentid";
+        return $this->db->getAll($sql);
     }
 
     public function selectbyuidAndcid($studentid, $teacherid, $courseid) {

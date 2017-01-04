@@ -8,6 +8,7 @@ class SelectedController extends BaseController {
         $max = $_POST['max'];
         $selectedmodel = new SelectedModel("selectcourse");
         $result = $selectedmodel->selectbyuid($studentid);
+        $length = count($result);
         if ($length < $max * $num - $max + 1) {
             $result = array();
         }
@@ -41,6 +42,10 @@ class SelectedController extends BaseController {
                 "reason" => "The select course record is not exists.");
         }
         echo json_encode($result);
+    }
+
+    public function jumpAction() {
+        $this->redirect("", "selected_course", 1);
     }
 }
 
