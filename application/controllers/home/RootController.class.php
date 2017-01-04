@@ -18,6 +18,13 @@ class RootController extends BaseController {
         $rootmodel->deleteUserbyuid($userid);
         echo json_encode(array("status" => "success"));
     }
+
+    public function queryUserAction() {
+        $username = $_POST['uname'];
+        $rootmodel = new RootModel("user");
+        $result = $rootmodel->queryUserbyuname($username);
+        echo json_encode($result);
+    }
 }
 
 
