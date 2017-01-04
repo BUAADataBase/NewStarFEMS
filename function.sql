@@ -174,9 +174,10 @@ create function calTotalCost(studentid int)
     else
         open rs;
         set sum = 0;
+        fetch rs into singleperiod, singleprice;
         repeat
-            fetch rs into singleperiod, singleprice;
             set sum = sum + singleprice * singleperiod;
+            fetch rs into singleperiod, singleprice;
         until done end repeat;
         close rs;
     end if;
@@ -208,9 +209,10 @@ create function calTotalIncome(teacherid int)
     else
         open rs;
         set sum = 0;
+        fetch rs into singleperiod, singleprice;
         repeat
-            fetch rs into singleperiod, singleprice;
             set sum = sum + singleprice * singleperiod;
+            fetch rs into singleperiod, singleprice;
         until done end repeat;
         close rs;
     end if;
@@ -237,6 +239,97 @@ create procedure deleteUser(in userid int)
 DELIMITER ;
 
 call deleteUser(5);
+
+
+
+drop function if exists getStudentNum;
+DELIMITER //
+create function getStudentNum(num int)
+    returns int
+    begin
+    declare result int default 0;
+    call getstudentNum(num, result);
+    return result;
+    end;
+//
+DELIMITER ;
+
+select getStudentNum(1);
+
+
+
+
+drop procedure if exists getstudentNum;
+DELIMITER //
+create procedure getstudentNum(in num int, out result int)
+    begin
+        declare userid int;
+        declare tempnum int;
+        declare done int default 0;
+        declare delta int default 0;
+        declare rs cursor for select uid from user where identify = 0;
+        DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+        open rs;
+        set result = 0;
+        fetch rs into userid;
+        repeat
+            select count(*) into tempnum from (select distinct uid_student, cid from selectcourse where uid_student = userid) temp;
+            if tempnum = num then
+                set result = result + 1;
+            end if;
+            fetch rs into userid;
+        until done end repeat;
+        close rs;
+    end
+//
+DELIMITER ;
+
+
+
+drop function if exists getTeacherNum;
+DELIMITER //
+create function getTeacherNum(num int)
+    returns int
+    begin
+    declare result int default 0;
+    call getteacherNum(num, result);
+    return result;
+    end;
+//
+DELIMITER ;
+
+select getTeacherNum(1);
+
+
+
+drop procedure if exists getteacherNum;
+DELIMITER //
+create procedure getteacherNum(in num int, out result int)
+    begin
+        declare userid int;
+        declare tempnum int;
+        declare done int default 0;
+        declare rs cursor for select uid from user where identify = 1;
+        DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+        open rs;
+        set result = 0;
+        fetch rs into userid;
+        repeat
+            select count(*) into tempnum from (select distinct uid_teacher, cid from selectcourse where uid_teacher = userid) temp;
+            if tempnum = num then
+                set result = result + 1;
+            end if;
+            fetch rs into userid;
+        until done end repeat;
+        close rs;
+    end
+//
+DELIMITER ;
+
+
+
+
+
 
 
 
