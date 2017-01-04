@@ -6,6 +6,10 @@ class RootModel extends Model {
         $sql = "select uid, uname, phonenumber, calTotalCost(uid) from user";
         return $this->db->getAll($sql);
     }
+
+    public function deleteUserbyuid($uid) {
+
+    }
 }
 
 

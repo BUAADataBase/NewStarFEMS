@@ -222,6 +222,24 @@ DELIMITER ;
 select calTotalIncome(1);
 
 
+drop procedure if exists deleteUser;
+DELIMITER //
+create procedure deleteUser(in userid)
+    begin
+        delete from profile where uid = userid;
+        delete from selectcourse where uid_student = userid or uid_teacher = userid;
+        delete from taechcourse where uid = userid;
+        delete from userblog where uid = userid;
+        delete from user where uid = userid;
+    end
+//
+DELIMITER ;
+
+
+
+
+
+
 
 
 

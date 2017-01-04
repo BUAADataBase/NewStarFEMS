@@ -6,11 +6,13 @@ class RootController extends BaseController {
         $this->redirect("", "root", 1);
     }
 
-    public function  getUserInfo(){
+    public function  getUserInfoAction(){
         $rootmodel = new RootModel("user");
         $result = $rootmodel->getInfo();
         echo json_encode($result);
     }
+
+    public function deleteUserAction()
 }
 
 
