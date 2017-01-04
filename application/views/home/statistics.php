@@ -86,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/graph.js"></script>
 <!--/script-->
 </head>
-    <body  onload="get_uname()">
+    <body  onload="get_userInfo()">
 <!--header-->
         <div class="header" id="home">
             <nav class="navbar navbar-default">
@@ -143,17 +143,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--testmonials-->
 <div class="user_background">
     <div class="container">
-            <div class="col-lg-6 in-gp-tb">
-                <div class="input-group">
-                    <input class="form-control" id="search" placeholder="Search for..." type="text" style="position:absolute;left:300px;width:500px;">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" style="position:absolute;left:800px;" onclick="get_teachers()">Go!</button>
-                    </span>
-                </div>
+            <div class="testimonial-nfo">
+                <h3>Testimonials</h3>
+                <h5>Cras porttitor imperdiet volutpat nulla malesuada lectus eros <span>ut convallis felis consectetur ut </span></h5>
             </div>
-            <br />
-            <br />
-            <br />
             <div class="testimonial-grids">
                 <div class="testimonial-grid">
                     <p><span>"</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum iaculis diam quis sodales. Vestibulum eu dui tellus. In viverra porttitor auctor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas<span> "</span></p>
@@ -164,54 +157,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div>
     <div class="main-grid">
             <div class="agile-grids">
-
                 <div class="col-md-6 agile-grid-left">
-                    <div class="main">
-
-                        <h3 id="pie">PieChart</h3>
-
-                        <center><table id='myTable5'>
-                            <caption>Game players count</caption>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>学生</th>
-                                    <th>老师</th>
-                                    <th>Mar</th>
-                                    <th>Apr</th>
-                                    <th>May</th>
-                                    <th>Jun</th>
-                                    <th>Jul</th>
-                                    <th>Aug</th>
-                                    <th>Sep</th>
-                                    <th>Oct</th>
-                                    <th>Nov</th>
-                                    <th>Dec</th>
-                                </tr>
-                            </thead>
-                                <tbody>
-                                <tr>
-                                    <th>2017</th>
-                                    <td>1251</td>
-                                    <td>1231</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                </tr>
-                            </tbody>
-                        </table></center>
+                    <div class="w3l-chart1">
+                        <h3>Teachers</h3>
+                        <div id="graph1"></div>
                     </div>
                 </div>
+
                 <div class="col-md-6 agile-grid-right">
                     <div class="w3l-chart1">
-                        <h3>Single Data Set</h3>
+                        <h3>Students</h3>
                         <div id="graph2"></div>
                     </div>
                 </div>
@@ -220,25 +175,72 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
 
     <!-- gv-chart -->
+    <div>
+    <table class="table table-bordered" style="width=1000px;">
+      <caption style="text-align: center">
+            <font size = "5" style = "font-weight:bold">
+                <br/><br/>统计信息<br/><br/>
+            </font>
+        </caption>
+      <colgroup>
+          <col style="width:12%">
+          <col style="width:12%">
+          <col style="width:12%">
+          <col style="width:12%">
+          <col style="width:14%">
+          <col style="width:14%">
+          <col style="width:12%">
+          <col style="width:12%">
+        </colgroup>
+      <thead>
+        <tr>
+          <th style="text-align:center">注册人数</th>
+          <th style="text-align:center">学生人数</th>
+          <th style="text-align:center">老师人数</th>
+          <th style="text-align:center">选课总数</th>
+          <th style="text-align:center">平均选课数</th>
+          <th style="text-align:center">平均代课数</th>
+          <th style="text-align:center">选课比例</th>
+          <th style="text-align:center">代课比例</th>
+        </tr>
+      </thead>
+      <tbody id="table">
+      </tbody>
+    </table>
+</div>
     <script type="text/javascript" src="js/jquery.gvChart.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                googleLoaded.done( function(){
-
-                    $('#myTable5').gvChart({
-                        chartType: 'PieChart',
-                        gvSettings: {
-                            vAxis: {title: 'No of players'},
-                            hAxis: {title: 'Month'},
-                            height: 300
-                            }
-                    });
-                });
-            });
-        </script>
         <script>
-            $(function(){
-
+            getchart_success=function(data){
+                var temp=33;
+                $('#graph1').graphify({
+                    start: 'linear',
+                    obj: {
+                        id: 'ggg',
+                        legend: false,
+                        showPoints: true,
+                        width: 775,
+                        legendX: 450,
+                        pieSize: 200,
+                        shadow: true,
+                        height: 400,
+                        animations: true,
+                        x: [0, 1, 2, 3, 4, 5, 6],
+                        points: [data.teacher.no1, data.teacher.no2, data.teacher.no3, data.teacher.no4, data.teacher.no5, data.teacher.no6, data.teacher.no7],
+                        xDist: 90,
+                        scale: 12,
+                        yDist: 35,
+                        grid: false,
+                        xName: '代课种数',
+                        dataNames: ['Amount'],
+                        design: {
+                            lineColor: 'red',
+                            tooltipFontSize: '20px',
+                            pointColor: 'red',
+                            barColor: 'blue',
+                            areaColor: 'orange'
+                        }
+                    }
+                });
                 $('#graph2').graphify({
                     start: 'donut',
                     obj: {
@@ -251,13 +253,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         shadow: true,
                         height: 400,
                         animations: true,
-                        x: [2000, 2001, 2002, 2003, 2004, 2005, 2006],
-                        points: [17, 33, 64, 22, 87, 45, 38],
+                        x: [0, 1, 2, 3, 4, 5, 6],
+                        points: [data.student.no1, data.student.no2, data.student.no3, data.student.no4, data.student.no5, data.student.no6, data.student.no7],
                         xDist: 90,
                         scale: 12,
                         yDist: 35,
-                        grid: true,
-                        xName: 'Year',
+                        grid: false,
+                        xName: '选课种数',
                         dataNames: ['Amount'],
                         design: {
                             lineColor: 'red',
@@ -268,7 +270,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         }
                     }
                 });
-            });
+            }
+            function get_chart(){
+                get_uname();
+                var url="http://localhost:8080/index.php?c=Statistics&a=Chart";
+                //getchart_success();
+                ajax_send(url,0,getchart_success,load_error);
+            }
+            getuserinfo_success=function(data){
+                var datalength=data.length;
+                var grandparentnode=document.getElementById("table");
+                for(var i=0;i<datalength;i++){
+                    var parentnode=document.createElement("tr");
+                    var childnode1=document.createElement("td");
+                    childnode1.innerHTML=data[i].PersonAmount;
+                    childnode1.setAttribute("style","text-align:center");
+                    var childnode2=document.createElement("td");
+                    childnode2.innerHTML=data[i].StudentAmount;
+                    childnode2.setAttribute("style","text-align:center");
+                    var childnode3=document.createElement("td");
+                    childnode3.innerHTML=data[i].TeacherAmount;
+                    childnode3.setAttribute("style","text-align:center");
+                    var childnode4=document.createElement("td");
+                    childnode4.innerHTML=data[i].SCAmount;
+                    childnode4.setAttribute("style","text-align:center");
+                    var childnode5=document.createElement("td");
+                    childnode5.innerHTML=data[i].AVGofStudentSC;
+                    childnode5.setAttribute("style","text-align:center");
+                    var childnode6=document.createElement("td");
+                    childnode6.innerHTML=data[i].AVGofTeacherSC;
+                    childnode6.setAttribute("style","text-align:center");
+                    var childnode7=document.createElement("td");
+                    childnode7.innerHTML=data[i].PercentofSCStudent;
+                    childnode7.setAttribute("style","text-align:center");
+                    var childnode8=document.createElement("td");
+                    childnode8.innerHTML=data[i].PercentofSCTeacher;
+                    childnode8.setAttribute("style","text-align:center");
+                    parentnode.appendChild(childnode1);
+                    parentnode.appendChild(childnode2);
+                    parentnode.appendChild(childnode3);
+                    parentnode.appendChild(childnode4);
+                    parentnode.appendChild(childnode5);
+                    parentnode.appendChild(childnode6);
+                    parentnode.appendChild(childnode7);
+                    parentnode.appendChild(childnode8);
+                    grandparentnode.appendChild(parentnode);
+
+                }
+            }
+    function get_userInfo(){
+        get_uname();
+        get_chart();
+        var url="http://localhost:8080/index.php?c=Statistics&a=Table";
+        ajax_send(url,0,getuserinfo_success,load_error);
+    }
         </script>
         <!-- //gv-chart -->
         <!-- //agile-grid-right -->

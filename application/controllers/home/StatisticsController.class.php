@@ -16,13 +16,13 @@ class StatisticsController extends BaseController {
         $result6 = $statisticsmodel->getStudentsNum(5);
         $result7 = $statisticsmodel->getStudentsNum(6);
         $array1 = array(
-            "no1" => $result1['number'],
-            "no2" => $result2['number'],
-            "no3" => $result3['number'],
-            "no4" => $result4['number'],
-            "no5" => $result5['number'],
-            "no6" => $result6['number'],
-            "no7" => $result7['number']
+            "no1" => $result1,
+            "no2" => $result2,
+            "no3" => $result3,
+            "no4" => $result4,
+            "no5" => $result5,
+            "no6" => $result6,
+            "no7" => $result7
             );
         $result1 = $statisticsmodel->getTeachersNum(0);
         $result2 = $statisticsmodel->getTeachersNum(1);
@@ -32,24 +32,24 @@ class StatisticsController extends BaseController {
         $result6 = $statisticsmodel->getTeachersNum(5);
         $result7 = $statisticsmodel->getTeachersNum(6);
         $array2 = array(
-            "no1" => $result1['number'],
-            "no2" => $result2['number'],
-            "no3" => $result3['number'],
-            "no4" => $result4['number'],
-            "no5" => $result5['number'],
-            "no6" => $result6['number'],
-            "no7" => $result7['number']
+            "no1" => $result1,
+            "no2" => $result2,
+            "no3" => $result3,
+            "no4" => $result4,
+            "no5" => $result5,
+            "no6" => $result6,
+            "no7" => $result7
             );
         $result = array (
             "teacher" => $array2,
             "student" => $array1);
-        return json_encode($result);
+        echo json_encode($result);
     }
 
     public function TableAction() {
         $statisticsmodel = new StatisticsModel("user");
         $result = $statisticsmodel->getAllMessage();
-        return json_encode($result);
+        echo json_encode($result);
     }
 }
 
