@@ -14,11 +14,11 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right margin-top cl-effect-2">
-                                <li><a href="http://localhost:8080/index.php"><span data-hover="Home">Home</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/about.php"><span data-hover="About">About</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/typography.php"><span data-hover="Shortcodes">Shortcodes</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/gallery.php"><span data-hover="Gallery">Gallery</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/contact.php"><span data-hover="Contact">Contact</span></a></li>
+                                <li><a href="http://localhost:8080/index.php"><span data-hover="Home">主页</span></a></li>
+                                <li><a href="http://localhost:8080/index.php"><span data-hover="About">个人主页</span></a></li>
+                                <li><a href="http://localhost:8080/application/views/home/about.php"><span data-hover="Shortcodes">关于我们</span></a></li>
+                                <li><a href="http://localhost:8080/application/views/home/gallery.php"><span data-hover="Gallery">精彩瞬间</span></a></li>
+                                <li><a href="http://localhost:8080/application/views/home/contact.php"><span data-hover="Contact">联系我们</span></a></li>
                             </ul>
                             <div class="clearfix"> </div>
                         </div><!-- /.navbar-collapse -->

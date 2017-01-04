@@ -113,15 +113,15 @@ getname_success=function(data){
                                 <li><p id="welcome_user" style="position:absolute;left:-150px;top:23px"><font color="white">欢迎，xxx</font></p></li>
                                 <li><a href="http://localhost:8080/index.php"><span data-hover="first_page">首页</span></a></li>
                                 <li><a href="http://localhost:8080/index.php?c=SC&a=jump"><span data-hover="choose_course">选课</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/typography.php"><span data-hover="course">已选课程</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/gallery.php"><span data-hover="blog">博客</span></a></li>
+                                <li><a href="http://localhost:8080/index.php?c=Selected&a=jump"><span data-hover="course">已选课程</span></a></li>
+                                <li><a href="http://localhost:8080/index.php?c=Blog&a=jump"><span data-hover="blog">博客</span></a></li>
                                 <li><a href="http://localhost:8080/index.php?c=Profile&a=jump"><span data-hover="information">个人信息</span></a></li>
                             </ul>
                             <div class="clearfix"> </div>
                         </div><!-- /.navbar-collapse -->
                 <!-- /.container-fluid -->
                 <div class="login-pop">
-                        <div id="loginpop"><a href="#" id="logoutButton" onclick="Logout()"><span>Login out</span></a>
+                        <div id="loginpop"><a href="#" id="logoutButton" onclick="Logout()"><span>&nbsp &nbsp Logout</span></a>
                         </div>
                         </div><script src="http://localhost:8080/application/views/home/js/menu_jquery.js"></script>
                         </div>
@@ -282,16 +282,16 @@ getname_success=function(data){
 
                 <div class="row">
                     <div class="col-xs-12 tm-copyright-col">
-                        <p class="tm-copyright-text">Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+                        <p class="tm-copyright-text">Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">“未来之星”一对一家教平台</a></p>
                     </div>
                 </div>
             </div>
         </footer>
 
         <!-- load JS files -->
-        <script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
+        <script src="http://localhost:8080/application/views/home/js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
         <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script> <!-- Tether for Bootstrap, http://stackoverflow.com/questions/34567939/how-to-fix-the-error-error-bootstrap-tooltips-require-tether-http-github-h -->
-        <script src="js/bootstrap.min.js"></script>
+        <script src="http://localhost:8080/application/views/home/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 logout_success = function(data) {
     var url = "http://localhost:8080/index.php";

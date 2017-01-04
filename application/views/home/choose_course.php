@@ -228,15 +228,15 @@ getteachersbycourse_success=function(data){
                                 <li><p id="welcome_user" style="position:absolute;left:-150px;top:23px"><font color="white">欢迎，xxx</font></p></li>
                                 <li><a href="http://localhost:8080/index.php"><span data-hover="first_page">首页</span></a></li>
                                 <li><a href="http://localhost:8080/index.php?c=SC&a=jump"><span data-hover="choose_course">选课</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/typography.php"><span data-hover="course">已选课程</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/gallery.php"><span data-hover="blog">博客</span></a></li>
+                                <li><a href="http://localhost:8080/index.php?c=Selected&a=jump"><span data-hover="course">已选课程</span></a></li>
+                                <li><a href="http://localhost:8080/index.php?c=Blog&a=jump"><span data-hover="blog">博客</span></a></li>
                                 <li><a href="http://localhost:8080/index.php?c=Profile&a=jump"><span data-hover="information">个人信息</span></a></li>
                             </ul>
                             <div class="clearfix"> </div>
                         </div><!-- /.navbar-collapse -->
                 <!-- /.container-fluid -->
                 <div class="login-pop">
-                        <div id="loginpop"><a href="#" id="logoutButton" onclick="Logout()"><span>Login out</span></a>
+                        <div id="loginpop"><a href="#" id="logoutButton" onclick="Logout()"><span>&nbsp &nbsp Logout</span></a>
                         </div>
                         </div><script src="http://localhost:8080/application/views/home/js/menu_jquery.js"></script>
                         </div>
@@ -278,7 +278,7 @@ getteachersbycourse_success=function(data){
             <br />
             <div class="testimonial-grids">
                 <div class="testimonial-grid">
-                    <p><span>"</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum iaculis diam quis sodales. Vestibulum eu dui tellus. In viverra porttitor auctor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas<span> "</span></p>
+                    <p><span>"</span> 一对一家教平台，致力于打造更高质量的一对一的在线教育平台，只有你想不到，没有我们做不到。梦想的天空分外蓝，世上无难事，只要肯攀登。<span> "</span></p>
                 </div>
             </div>
     </div>

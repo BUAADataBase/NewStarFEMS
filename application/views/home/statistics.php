@@ -45,27 +45,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         ajax_send(url,0,getname_success,load_error);
     }
 </script>
-<link href="css/style1.css" rel='stylesheet' type='text/css' />
+<link href="application/views/home/css/style1.css" rel='stylesheet' type='text/css' />
 <!-- font CSS -->
 <link href='http://fonts.useso.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 <!-- font-awesome icons -->
-<link rel="stylesheet" href="css/font.css" type="text/css"/>
-<link href="css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="application/views/home/css/font.css" type="text/css"/>
+<link href="application/views/home/css/font-awesome.css" rel="stylesheet">
 <!-- //font-awesome icons -->
 <script>
         (function () {
           var js;
           if (typeof JSON !== 'undefined' && 'querySelector' in document && 'addEventListener' in window) {
-            js = 'js/jquery.2.0.3.min.js';
+            js = 'application/views/home/js/jquery.2.0.3.min.js';
           } else {
-            js = 'js/jquery.1.10.2.min.js';
+            js = 'application/views/home/js/jquery.1.10.2.min.js';
           }
           document.write('<script src="' + js + '"><\/script>');
         }());
  </script>
-<script src="js/modernizr.js"></script>
-<script src="js/jquery.cookie.js"></script>
-<script src="js/screenfull.js"></script>
+<script src="application/views/home/js/modernizr.js"></script>
+<script src="application/views/home/js/jquery.cookie.js"></script>
+<script src="application/views/home/js/screenfull.js"></script>
         <script>
         $(function () {
             $('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
@@ -83,7 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </script>
 
 <!-- agile-grid-right -->
-<script src="js/graph.js"></script>
+<script src="application/views/home/js/graph.js"></script>
 <!--/script-->
 </head>
     <body  onload="get_userInfo()">
@@ -106,15 +106,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <ul class="nav navbar-nav navbar-right margin-top cl-effect-2">
                                 <li><p id="welcome_user" style="position:absolute;left:-150px;top:23px"><font color="white">欢迎，xxx</font></p></li>
                                 <li><a href="http://localhost:8080/index.php"><span data-hover="first_page">首页</span></a></li>
-                                <li><a href="http://localhost:8080/index.php?c=SC&a=jump"><span data-hover="choose_course">统计报表</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/gallery.php"><span data-hover="blog">博客</span></a></li>
+                                <li><a href="http://localhost:8080/index.php?c=Statistics&a=jump"><span data-hover="choose_course">统计报表</span></a></li>
+                                <li><a href="http://localhost:8080/index.php?c=Blog&a=jump"><span data-hover="blog">博客</span></a></li>
                                 <li><a href="http://localhost:8080/index.php?c=Profile&a=jump"><span data-hover="information">个人信息</span></a></li>
                             </ul>
                             <div class="clearfix"> </div>
                         </div><!-- /.navbar-collapse -->
                 <!-- /.container-fluid -->
                 <div class="login-pop">
-                        <div id="loginpop"><a href="#" id="logoutButton" onclick="Logout()"><span>Login out</span></a>
+                        <div id="loginpop"><a href="#" id="logoutButton" onclick="Logout()"><span>&nbsp &nbsp Logout</span></a>
                         </div>
                         </div><script src="http://localhost:8080/application/views/home/js/menu_jquery.js"></script>
                         </div>
@@ -144,12 +144,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="user_background">
     <div class="container">
             <div class="testimonial-nfo">
-                <h3>Testimonials</h3>
-                <h5>Cras porttitor imperdiet volutpat nulla malesuada lectus eros <span>ut convallis felis consectetur ut </span></h5>
+                <h3>“未来之星”</h3>
+                <h5>每一个人都是未来的主人，我们的生活我做主。 </span></h5>
             </div>
             <div class="testimonial-grids">
                 <div class="testimonial-grid">
-                    <p><span>"</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum iaculis diam quis sodales. Vestibulum eu dui tellus. In viverra porttitor auctor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas<span> "</span></p>
+                    <p><span>"</span> 一对一家教平台，致力于打造更高质量的一对一的在线教育平台，只有你想不到，没有我们做不到。梦想的天空分外蓝，世上无难事，只要肯攀登。<span> "</span></p>
                 </div>
             </div>
     </div>
@@ -208,7 +208,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       </tbody>
     </table>
 </div>
-    <script type="text/javascript" src="js/jquery.gvChart.min.js"></script>
+    <script type="text/javascript" src="application/views/home/js/jquery.gvChart.min.js"></script>
         <script>
             getchart_success=function(data){
                 var temp=33;
@@ -327,8 +327,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </script>
         <!-- //gv-chart -->
         <!-- //agile-grid-right -->
-    <script src="js/bootstrap.js"></script>
-    <script src="js/proton.js"></script>
+    <script src="application/views/home/js/bootstrap.js"></script>
+    <script src="application/views/home/js/proton.js"></script>
 
 </div>
 <script type="text/javascript">

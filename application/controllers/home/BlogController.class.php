@@ -3,21 +3,27 @@
 class BlogController extends BaseController {
 
     public function jumpAction() {
-        $this->redirect("", "blog", 1);
+        if ($_SESSION['identify'] == 0) {
+            $this->redirect("", "blog_student", 1);
+        }
+        else {
+            $this->redirect("", "blog_teacher", 1);
+        }
     }
 
     public function getBlogAction() {
         $userid = $_SESSION['uid'];
         $blogmodel = new BlogModel("blog");
         $result = $blogmodel->getBlogbyUID($userid);
-        if (count($result) >= 4) {
+        $length = count($result);
+        if ($length >= 4) {
             $result = array_slice($result, 0, 4);
         }
         else {
-            for ($i = 0; $i < 4 - count($result); $i ++) {
-                $result[] = array (
+            for ($i = 0; $i < 4 - $length; $i ++) {
+                $result[$length+$i] = array (
                     "uid" => $userid,
-                    "uname" => $blogmodel->getNamebyUID(),
+                    "uname" => $blogmodel->getNamebyUID($userid),
                     "blogid" => 0,
                     "headline" => "Come on to write new blog!",
                     "blogmessage" => "You are the best!"
