@@ -67,7 +67,7 @@ getname_success=function(data){
                             <ul class="nav navbar-nav navbar-right margin-top cl-effect-2">
                                 <li><p id="welcome_user" style="position:absolute;left:-150px;top:23px"><font color="white">欢迎，xxx</font></p></li>
                                 <li><a href="http://localhost:8080/index.php"><span data-hover="first_page">首页</span></a></li>
-                                <li><a href="http://localhost:8080/application/views/home/about.php"><span data-hover="choose_course">选课</span></a></li>
+                                <li><a href="http://localhost:8080/index.php?c=SC&a=jump"><span data-hover="choose_course">选课</span></a></li>
                                 <li><a href="http://localhost:8080/application/views/home/typography.php"><span data-hover="course">已选课程</span></a></li>
                                 <li><a href="http://localhost:8080/application/views/home/gallery.php"><span data-hover="blog">博客</span></a></li>
                                 <li><a href="http://localhost:8080/index.php?c=Profile&a=jump"><span data-hover="information">个人信息</span></a></li>

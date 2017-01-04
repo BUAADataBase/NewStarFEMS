@@ -8,7 +8,7 @@ class MainModel extends Model {
     }
 
     public function selectallbyitem($identify) {
-        $sql = "select uid, uname, introduction from $this->table, profile where identify = $identify and profile.uid = $this->table.uid";
+        $sql = "select $this->table.uid, uname, introduction from $this->table, profile where identify = $identify and profile.uid = $this->table.uid";
         return $this->db->getAll($sql);
     }
 

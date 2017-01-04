@@ -37,19 +37,58 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
 </script>
 <script type="text/javascript">
+getname_success=function(data){
+    var user_name=document.getElementById("welcome_user").innerHTML="<font color=\"white\">欢迎，"+data.name+"</font>";
+}
+    function get_uname(){
+        var url="http://localhost:8080/index.php?c=Main&a=getname";
+        ajax_send(url,0,getname_success,load_error);
+    }
+
+    SC_success = function(data) {
+        if (data.status == "failed") {
+            alert(data.reason);
+        }
+        else {
+            alert("选课成功，请等待老师确认");
+        }
+    }
+    function inputperiod(no) {
+        var period = prompt("请输入你要上课的学时:","32");
+        var ensure = false;
+        if (period != null) {
+            if (!isNaN(period)) {
+                ensure = true;
+            }
+        }
+        teacherid = list.teacherlist[6*(currentpage-1) + no-1].uid;
+        alert(teacherid);
+        var url = "http://localhost:8080/index.php?c=SC&a=SC";
+        var json = "{\"teacherid\":"+teacherid+",\"courseid\":"+course_number+",\"period\":"+period+"}";
+        json = JSON.parse(json);
+        ajax_send(url, json, SC_success, load_error);
+    }
+</script>
+<script type="text/javascript">
 course="";
 pages=0;
+currentpage = 1;
+course_number = 0;
+list = [];
 getname_success=function(data){
     var user_name=document.getElementById("welcome_user").innerHTML="<font color=\"white\">欢迎，"+data.name+"</font>";
 }
 getteachersbycourse_success=function(data){
+    list = data;
     pages=parseInt(data.length/6)+1;
     var teacherslist=data.teacherlist;
     var teacherlegth=(teacherslist.length>6)?6:teacherslist.length;
     if(pages<5){
         for(var i=5;i!=pages;i--){
             var str="a"+i;
-            document.getElementById(str).parentNode.removeChild(document.getElementById(str));
+            if (document.getElementById(str) != null) {
+                document.getElementById(str).parentNode.removeChild(document.getElementById(str));
+            }
         }
     }
     for(var i=0;i<teacherlegth;i++){
@@ -57,9 +96,10 @@ getteachersbycourse_success=function(data){
         var str_course="course"+temp;
         var str_teacher="teacher"+temp;
         var str_profile="profile"+temp;
+
         document.getElementById(str_course).innerHTML=course;
         document.getElementById(str_teacher).innerHTML=teacherslist[i].uname;
-        document.getElementById(str_teacher).innerHTML=teacherslist[i].profile;
+        document.getElementById(str_profile).innerHTML=teacherslist[i].introduction;
     }
 
 }
@@ -67,7 +107,6 @@ getteachersbycourse_success=function(data){
         var url="http://localhost:8080/index.php?c=Main&a=getname";
         ajax_send(url,0,getname_success,load_error);
         var user_search=document.getElementById("search");
-        var course_number;
         var flag;
         if(user_search.value==""){
             alert("查询不能为空！");
@@ -122,7 +161,16 @@ getteachersbycourse_success=function(data){
 </script>
 <!--/script-->
 </head>
-    <body>
+    <?php
+    $course = array (
+        "math" => 1,
+        "chinese" => 2,
+        "english" => 3,
+        "physics" => 4,
+        "chemisty" => 5,
+        "biology" =>6);
+    ?>
+    <body onload="get_uname()">
 <!--header-->
         <div class="header" id="home">
             <nav class="navbar navbar-default">
@@ -208,7 +256,7 @@ getteachersbycourse_success=function(data){
                         <center><h3 id="course1">请选择课程或老师</h3></center>
                             <span id="teacher1" style="position:absolute;left:140px;top:230px;">空</span>
                             <pre id="profile1" style="position:absolute;left:20px;top:50px;width:80px;height:200px;white-space: pre-wrap;word-wrap: break-word;">profile:空</pre>
-                            <input type="button" id="choose1" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="选课">
+                            <input type="button" id="choose1" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="选课" onclick="inputperiod(1)">
                         </figcaption>
                     </figure>
                 </li>
@@ -219,7 +267,7 @@ getteachersbycourse_success=function(data){
                         <center><h3 id="course2">请选择课程或老师</h3></center>
                             <span id="teacher2" style="position:absolute;left:140px;top:230px;">空</span>
                             <pre id="profile2" style="position:absolute;left:20px;top:50px;width:80px;height:200px;white-space: pre-wrap;word-wrap: break-word;">profile:空</pre>
-                            <input type="button" id="choose2" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="选课">
+                            <input type="button" id="choose2" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="选课" onclick="inputperiod(2)">
                         </figcaption>
                     </figure>
                 </li>
@@ -230,7 +278,7 @@ getteachersbycourse_success=function(data){
                         <center><h3 id="course3">请选择课程或老师</h3></center>
                             <span id="teacher3" style="position:absolute;left:140px;top:230px;">空</span>
                             <pre id="profile3" style="position:absolute;left:20px;top:50px;width:80px;height:200px;white-space: pre-wrap;word-wrap: break-word;">profile:空</pre>
-                            <input type="button" id="choose3" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="选课">
+                            <input type="button" id="choose3" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="选课" onclick="inputperiod(3)">
                         </figcaption>
                     </figure>
                 </li>
@@ -241,7 +289,7 @@ getteachersbycourse_success=function(data){
                         <center><h3 id="course4">请选择课程或老师</h3></center>
                             <span id="teacher4" style="position:absolute;left:140px;top:230px;">空</span>
                             <pre id="profile4" style="position:absolute;left:20px;top:50px;width:80px;height:200px;white-space: pre-wrap;word-wrap: break-word;">profile:空</pre>
-                            <input type="button" id="choose1" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="选课">
+                            <input type="button" id="choose1" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="选课" onclick="inputperiod(4)">
                         </figcaption>
                     </figure>
                 </li>
@@ -252,7 +300,7 @@ getteachersbycourse_success=function(data){
                         <center><h3 id="course5">请选择课程或老师</h3></center>
                             <span id="teacher5" style="position:absolute;left:140px;top:230px;">空</span>
                             <pre id="profile5" style="position:absolute;left:20px;top:50px;width:80px;height:200px;white-space: pre-wrap;word-wrap: break-word;">profile:空</pre>
-                            <input type="button" id="choose5" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="选课">
+                            <input type="button" id="choose5" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="选课" onclick="inputperiod(5)">
                         </figcaption>
                     </figure>
                 </li>
@@ -263,7 +311,7 @@ getteachersbycourse_success=function(data){
                         <center><h3 id="course6">请选择课程或老师</h3></center>
                             <span id="teacher6" style="position:absolute;left:140px;top:230px;">空</span>
                             <pre id="profile6" style="position:absolute;left:20px;top:50px;width:80px;height:200px;white-space: pre-wrap;word-wrap: break-word;">profile:空</pre>
-                            <input type="button" id="choose6" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="选课">
+                            <input type="button" id="choose6" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="选课" onclick="inputperiod(6)">
                         </figcaption>
                     </figure>
                 </li>
