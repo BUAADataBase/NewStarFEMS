@@ -51,13 +51,15 @@ getname_success=function(data){
         }
         else {
             alert("确认成功！");
+            url = "http://localhost:8080/index.php?c=Browse&a=jumptobrowse";
+            window.location.href = url;
         }
     }
     function inputprice(no) {
         var price = prompt("请输入你代课佣金:","100");
         var ensure = false;
         if (price != null) {
-            if (!isNaN(period)) {
+            if (!isNaN(price)) {
                 ensure = true;
             }
         }
@@ -69,6 +71,7 @@ getname_success=function(data){
         else{
             var currentpage = document.getElementById("a11");
             studentid = list.studentlist[6*(currentpage.innerHTML - 1) + no - 1].uid;
+            course_number = list.studentlist[6*(currentpage.innerHTML - 1) + no - 1].cid;
             var url = "http://localhost:8080/index.php?c=Browse&a=Confirm";
             var json = "{\"studentid\":"+studentid+",\"courseid\":"+course_number+",\"price\":"+price+"}";
             json = JSON.parse(json);
@@ -121,8 +124,8 @@ getstudents_success=function(data){
         var str_profile="profile"+temp;
         var str_img="img"+temp;
 
-        document.getElementById(str_course).innerHTML=course;
-        document.getElementById(str_teacher).innerHTML=studentslist[i].uname;
+        document.getElementById(str_course).innerHTML=studentslist[i].cname;
+        document.getElementById(str_student).innerHTML=studentslist[i].uname;
         document.getElementById(str_profile).innerHTML="profile:"+studentslist[i].introduction;
         //document.getElementById(str).src="http://localhost:8080/application/views/home/images/"+Number.toString(teacherslist[i].uid)+".jpg";
     }

@@ -329,6 +329,33 @@ DELIMITER ;
 
 
 
+drop procedure if exists ConfirmMoney;
+DELIMITER //
+create procedure ConfirmMoney(in singleprice double precision, in studentid int, in teacherid int, in courseid int)
+    begin
+        update selectcourse set price = singleprice where uid_student = studentid and uid_teacher = teacherid and cid = courseid;
+        update selectcourse set confirm = 1 where uid_student = studentid and uid_teacher = teacherid and cid = courseid;
+    end
+//
+DELIMITER ;
+
+
+call ConfirmMoney(80, 2, 1, 1);
+
+
+drop procedure if exists DisConfirmMoney;
+DELIMITER //
+create procedure DisConfirmMoney(in studentid int, in teacherid int, in courseid int)
+    begin
+        update selectcourse set price = 0 where uid_student = studentid and uid_teacher = teacherid and cid = courseid;
+        update selectcourse set confirm = 0 where uid_student = studentid and uid_teacher = teacherid and cid = courseid;
+    end
+//
+DELIMITER ;
+
+
+call DisConfirmMoney(80, 2, 1, 1);
+
 
 
 

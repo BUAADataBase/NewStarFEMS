@@ -18,7 +18,7 @@ class BrowseModel extends Model {
             return false;
         }
         else {
-            $sql = "update $this->table set price = $price where uid_student = $studentid and uid_teacher = $teacherid and cid = $courseid and confirm = 0";
+            $sql = "call ConfirmMoney($price, $studentid, $teacherid, $courseid)";
             $this->db->query($sql);
             return true;
         }
@@ -31,7 +31,7 @@ class BrowseModel extends Model {
             return false;
         }
         else {
-            $sql = "update $this->table set price = 0 where uid_student = $studentid and uid_teacher = $teacherid and cid = $courseid and confirm = 1";
+            $sql = "call DisConfirmMoney($studentid, $teacherid, $courseid)";
             $this->db->query($sql);
             return true;
         }

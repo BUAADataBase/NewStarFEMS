@@ -2,8 +2,12 @@
 
 class BrowseController extends BaseController {
 
-    public function jumpAction() {
-        $this->redirect("", "browsestudent", 1);
+    public function jumptobrowseAction() {
+        $this->redirect("", "browse_student", 1);
+    }
+
+    public function jumptoselectedAction() {
+        $this->redirect("", "selected_student", 1);
     }
 
     public function getStudentAction() {
