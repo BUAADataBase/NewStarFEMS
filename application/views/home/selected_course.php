@@ -50,23 +50,26 @@ getname_success=function(data){
             alert(data.reason);
         }
         else {
-            alert("选课成功，请等待老师确认");
+            alert("退课成功");
+            var url = "http://localhost:8080/index.php?c=Selected&a=jump";
+            window.location.href = url;
         }
     }
     function inputperiod(no) {
-        var period = prompt("请输入你要上课的学时:","32");
-        var ensure = false;
-        if (period != null) {
-            if (!isNaN(period)) {
-                ensure = true;
-            }
+        var str="course"+no;
+        var course=document.getElementById(str);
+        if(course.innerHTML=="空"){
+            alert("退课有误，请确认是否选课！");
         }
-        var currentpage = document.getElementById("a11");
-        teacherid = list.teacherlist[6*(currentpage.innerHTML - 1) + no - 1].uid;
-        var url = "http://localhost:8080/index.php?c=SC&a=SC";
-        var json = "{\"teacherid\":"+teacherid+",\"courseid\":"+course_number+",\"period\":"+period+"}";
-        json = JSON.parse(json);
-        ajax_send(url, json, SC_success, load_error);
+        else{
+            var currentpage = document.getElementById("a11");
+            var teacherid = list.selectedcourselist[6*(currentpage.innerHTML - 1) + no - 1].uid;
+            var course_number = list.selectedcourselist[6*(currentpage.innerHTML - 1) + no - 1].cid;
+            var url = "http://localhost:8080/index.php?c=Selected&a=CancelCourse";
+            var json = "{\"teacherid\":"+teacherid+",\"courseid\":"+course_number+"}";
+            json = JSON.parse(json);
+            ajax_send(url, json, SC_success, load_error);
+        }
     }
 </script>
 <script type="text/javascript">
@@ -81,7 +84,6 @@ getteachersbycourse_success=function(data){
     pages=parseInt(data.listlength/6)+1;
     var teacherslist=data.selectedcourselist;
     var teacherlegth=(teacherslist.length>6)?6:teacherslist.length;
-    alert(teacherlegth);
     if(lastpage==0&&pages<5){
         lastpage=pages;
         for(var i=5;i!=pages;i--){
@@ -112,12 +114,30 @@ getteachersbycourse_success=function(data){
         var str_period="period"+temp;
         var str_teacher="teacher"+temp;
         var str_price="price"+temp;
+        var str_confirm="confirm"+temp;
         var str_img="img"+temp;
 
         document.getElementById(str_course).innerHTML=teacherslist[i].cname;
         document.getElementById(str_teacher).innerHTML=teacherslist[i].uname;
         document.getElementById(str_period).innerHTML=teacherslist[i].period;
         document.getElementById(str_price).innerHTML=teacherslist[i].price;
+        document.getElementById(str_confirm).innerHTML=(teacherslist[i].confirm==1)?"已确认":"未确认";
+        //document.getElementById(str).src="http://localhost:8080/application/views/home/images/"+Number.toString(teacherslist[i].uid)+".jpg";
+    }
+    for(var i=teacherlegth;i<6;i++){
+        var temp=i+1;
+        var str_course="course"+temp;
+        var str_period="period"+temp;
+        var str_teacher="teacher"+temp;
+        var str_price="price"+temp;
+        var str_confirm="confirm"+temp;
+        var str_img="img"+temp;
+
+        document.getElementById(str_course).innerHTML="空";
+        document.getElementById(str_teacher).innerHTML="空";
+        document.getElementById(str_period).innerHTML="空";
+        document.getElementById(str_price).innerHTML="空";
+        document.getElementById(str_confirm).innerHTML="未确认";
         //document.getElementById(str).src="http://localhost:8080/application/views/home/images/"+Number.toString(teacherslist[i].uid)+".jpg";
     }
 
@@ -125,7 +145,7 @@ getteachersbycourse_success=function(data){
     function get_teachers(){
             get_uname();
             var json="{\"number\":1"+",\"max\":6"+"}";
-            url="http://localhost:8080/index.php?c=Selected&a=SelectedCourse"
+            url="http://localhost:8080/index.php?c=Selected&a=SelectedCourse";
             json=JSON.parse(json);
             ajax_send(url,json,getteachersbycourse_success,load_error);
     }
@@ -222,6 +242,7 @@ getteachersbycourse_success=function(data){
                             <label id="period1" style="position:absolute;left:20px;top:70px;">空</label>
                             <label style="position:absolute;left:280px;">价格：</label>
                             <label id="price1" style="position:absolute;left:280px;top:70px;">空</label>
+                            <label id="confirm1" style="color:#00ec00;position:absolute;left:30px;top:220px;">未确认</label>
                             <span id="teacher1" style="position:absolute;left:140px;top:230px;">空</span>
                             <input type="button" id="choose1" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="退课" onclick="inputperiod(1)">
                         </figcaption>
@@ -236,6 +257,7 @@ getteachersbycourse_success=function(data){
                             <label id="period2" style="position:absolute;left:20px;top:70px;">空</label>
                             <label style="position:absolute;left:280px;">价格：</label>
                             <label id="price2" style="position:absolute;left:280px;top:70px;">空</label>
+                            <label id="confirm2" style="color:#00ec00;position:absolute;left:30px;top:220px;">未确认</label>
                             <span id="teacher2" style="position:absolute;left:140px;top:230px;">空</span>
                             <input type="button" id="choose2" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="退课" onclick="inputperiod(2)">
                         </figcaption>
@@ -250,6 +272,7 @@ getteachersbycourse_success=function(data){
                             <label id="period3" style="position:absolute;left:20px;top:70px;">空</label>
                             <label style="position:absolute;left:280px;">价格：</label>
                             <label id="price3" style="position:absolute;left:280px;top:70px;">空</label>
+                            <label id="confirm3" style="color:#00ec00;position:absolute;left:30px;top:220px;">未确认</label>
                             <span id="teacher3" style="position:absolute;left:140px;top:230px;">空</span>
                             <input type="button" id="choose3" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="退课" onclick="inputperiod(3)">
                         </figcaption>
@@ -264,6 +287,7 @@ getteachersbycourse_success=function(data){
                             <label id="period4" style="position:absolute;left:20px;top:70px;">空</label>
                             <label style="position:absolute;left:280px;">价格：</label>
                             <label id="price4" style="position:absolute;left:280px;top:70px;">空</label>
+                            <label id="confirm4" style="color:#00ec00;position:absolute;left:30px;top:220px;">未确认</label>
                             <span id="teacher4" style="position:absolute;left:140px;top:230px;">空</span>
                             <input type="button" id="choose1" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="退课" onclick="inputperiod(4)">
                         </figcaption>
@@ -278,6 +302,7 @@ getteachersbycourse_success=function(data){
                             <label id="period5" style="position:absolute;left:20px;top:70px;">空</label>
                             <label style="position:absolute;left:280px;">价格：</label>
                             <label id="price5" style="position:absolute;left:280px;top:70px;">空</label>
+                            <label id="confirm5" style="color:#00ec00;position:absolute;left:30px;top:220px;">未确认</label>
                             <span id="teacher5" style="position:absolute;left:140px;top:230px;">空</span>
                             <input type="button" id="choose5" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="退课" onclick="inputperiod(5)">
                         </figcaption>
@@ -292,6 +317,7 @@ getteachersbycourse_success=function(data){
                             <label id="period6" style="position:absolute;left:20px;top:70px;">空</label>
                             <label style="position:absolute;left:280px;">价格：</label>
                             <label id="price6" style="position:absolute;left:280px;top:70px;">空</label>
+                            <label id="confirm6" style="color:#00ec00;position:absolute;left:30px;top:220px;">未确认</label>
                             <span id="teacher6" style="position:absolute;left:140px;top:230px;">空</span>
                             <input type="button" id="choose6" style="width: auto; background:#232428;color: #fff;font-size: 0.8725em;padding: 7px 20px;border: none;margin: 0 12px 0 0;cursor: pointer;transition: all .5s;-webkit-transition: all .5s;-moz-transition: all .5s;-o-transition: all .5s;outline:none;text-transform: uppercase;position:absolute;left:250px;top:225px;" value="退课" onclick="inputperiod(6)">
                         </figcaption>

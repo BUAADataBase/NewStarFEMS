@@ -153,3 +153,36 @@ create function teacherTeachCoursePercent()
 DELIMITER ;
 
 select teacherTeachCoursePercent();
+
+
+drop function if exists calTotalCost;
+DELIMITER //
+create function calTotalCost(studentid int)
+    returns double precision
+    begin
+    declare period int;
+    declare price double precision;
+    declare sum double precision;
+    declare temp int;
+    declare rs cursor for select period, price from selectcourse where uid_student = studentid;
+    declare done int default 0;
+    select count(*) into temp from selectcourse where uid_student = studentid;
+    if temp == 0 then
+        set sum = 0;
+    else
+        open rs;
+        fetch next from rs into period, price;
+        repeat
+            set sum = sum + price * period;
+            fetch next from rs into period, price;
+        until done end repeat;
+        close rs;
+    end if;
+    return sum;
+    end;
+//
+DELIMITER ;
+
+select calTotalCost(1);
+
+
