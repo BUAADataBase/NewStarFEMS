@@ -15,6 +15,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="http://localhost:8080/application/views/home/js/jquery-1.11.0.min.js"></script>
 <!-- js -->
 <script src="http://localhost:8080/application/views/home/js/bootstrap.js"></script>
+<script src="http://localhost:8080/application/views/home/js/md5.js"></script>
 <!-- /js -->
 <!--fonts-->
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400italic,400,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
@@ -330,7 +331,7 @@ getname_success=function(data){
                                 course_str+="生物 ";
                             ident_goodcourse=1;
                         }
-                        var json="{"+"\"uname\":\""+user_name.value+"\",\"age\":\""+user_age.value+"\",\"old_password\":\""+old_password.value+"\",\"new_password\":\""+new_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\",\"pw_identify\":"+ident_pw+",\"chinese\":"+week_chinese_check+",\"math\":"+week_math_check+",\"english\":"+week_english_check+",\"physics\":"+week_physics_check+",\"chemistry\":"+week_chemistry_check+",\"biology\":"+week_biology_check+",\"teachcourse_identify\":"+ident_course+",\"goodcourse\":\""+course_str+"\",\"course_identify\":"+ident_goodcourse+",\"profile\":\""+user_profile.value+"\"}";
+                        var json="{"+"\"uname\":\""+user_name.value+"\",\"age\":\""+user_age.value+"\",\"old_password\":\""+hex_md5(old_password.value)+"\",\"new_password\":\""+hex_md5(new_password.value)+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\",\"pw_identify\":"+ident_pw+",\"chinese\":"+week_chinese_check+",\"math\":"+week_math_check+",\"english\":"+week_english_check+",\"physics\":"+week_physics_check+",\"chemistry\":"+week_chemistry_check+",\"biology\":"+week_biology_check+",\"teachcourse_identify\":"+ident_course+",\"goodcourse\":\""+course_str+"\",\"course_identify\":"+ident_goodcourse+",\"profile\":\""+user_profile.value+"\"}";
                         json = JSON.parse(json);
                         var post_url="http://localhost:8080/index.php?c=Profile&a=editTeacherProfile";
                         ajax_send(post_url,json,Profile_success,load_error);

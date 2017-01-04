@@ -23,6 +23,7 @@ getteacher_success=function(data){
 <div class="banner">
 	<div class="container">
 	<script src="http://localhost:8080/application/views/home/js/responsiveslides.min.js"></script>
+	<script src="http://localhost:8080/application/views/home/js/md5.js"></script>
  <script>
     $(function () {
       $("#slider").responsiveSlides({
@@ -332,7 +333,7 @@ getteacher_success=function(data){
             alert("密码过长！");
         }
         else{
-        	var json="{\"email\":\""+account.value+"\",\"password\":\""+pw.value+"\"}";
+        	var json="{\"email\":\""+account.value+"\",\"password\":\""+hex_md5(pw.value)+"\"}";
         	json=JSON.parse(json);
         	var url="http://localhost:8080/index.php?c=Login&a=login";
         	ajax_send(url,json,login_success,load_error);
@@ -347,7 +348,7 @@ success = function(data) {
 		window.location.href = url;
 	}
 	else {
-		alert("请先退出登录再进行注册！");
+		alert(data.reason);
 	}
 }
 

@@ -16,6 +16,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="banner">
     <div class="container">
     <script src="http://localhost:8080/application/views/home/js/responsiveslides.min.js"></script>
+    <script src="http://localhost:8080/application/views/home/js/md5.js"></script>
  <script>
     $(function () {
       $("#slider").responsiveSlides({
@@ -135,10 +136,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <input input type="button" id="register" value="学生注册" style="position:absolute;left:500px" onclick="register_check(0)">
             <input input type="button" id="register" value="老师注册" style="position:absolute;left:800px" onclick="register_check(1)">
             <script type="text/javascript">
-                sucess=function(data){
-                    if(data.status=="sucess"){
+                register_success=function(data){
+                    if(data.status=="success"){
                         alert("成功！");
-                        url="";
+                        url="http://localhost:8080/index.php";
+                        window.location.href = url;
                     }
                     else{
                         alert(data.reason);
@@ -194,10 +196,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         alert("必须为11位手机号码！");
                     }
                     else{
-                        var json="{"+"\"name\":\""+user_name.value+"\",\"sex\":"+sex+",\"age\":"+user_age.value+",\"email\":\""+user_email.value+"\",\"password\":\""+user_password.value+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\",\"identify\":"+user_identify+"}";
+                        var json="{"+"\"name\":\""+user_name.value+"\",\"sex\":"+sex+",\"age\":"+user_age.value+",\"email\":\""+user_email.value+"\",\"password\":\""+hex_md5(user_password.value)+"\",\"grade\":\""+user_grade.value+"\",\"school\":\""+user_school.value+"\",\"tel\":\""+user_tel.value+"\",\"identify\":"+user_identify+"}";
                         json = JSON.parse(json);
                         var post_url="http://localhost:8080/index.php?c=Register&a=register";
-                        ajax_send(post_url,json,success,load_error);
+                        ajax_send(post_url,json,register_success,load_error);
                     }
                 }
             </script>
@@ -277,8 +279,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 });
 </script>
 <script type="text/javascript">
-    success=function(data){
-        if(data.status=="sucess"){
+    login_success=function(data){
+        if(data.status=="success"){
             alert("登录成功！");
             var url="http://localhost:8080/index.php?c=Login&a=jump";
             window.location.href = url;
@@ -292,17 +294,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         var pw=document.getElementById("password");
         if(account.value==""||pw.value=="")
             alert("用户名或密码不能为空！");
-        else if(user_email.value.match(/\w+@[0-9a-zA-Z]+\.[0-9a-zA-Z]+/)==""){
+        else if(account.value.match(/\w+@[0-9a-zA-Z]+\.[0-9a-zA-Z]+/)==""){
             alert("邮箱格式不正确！");
         }
-        else if(user_password.value.length>16){
+        else if(pw.value.length>16){
             alert("密码过长！");
         }
         else{
-            var json="{\"email\":\""+account.value+"\",\"password\":\""+pw.value+"\"}";
+            var json="{\"email\":\""+account.value+"\",\"password\":\""+hex_md5(pw.value)+"\"}";
             json=JSON.parse(json);
             var url="http://localhost:8080/index.php?c=Login&a=login";
-            ajax_send(url,json,success,load_error);
+            ajax_send(url,json,login_success,load_error);
         }
     }
 </script>
@@ -310,11 +312,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 success = function(data) {
     if (data.status == "success") {
+        alert("success");
         url = "http://localhost:8080/index.php?c=Register&a=jump";
         window.location.href = url;
     }
     else {
-        alert("请先退出登录再进行注册！");
+        alert(data.reason);
     }
 }
 
