@@ -66,12 +66,15 @@ getname_success=function(data){
         var url = "http://localhost:8080/index.php?c=SC&a=SC";
         var json = "{\"teacherid\":"+teacherid+",\"courseid\":"+course_number+",\"period\":"+period+"}";
         json = JSON.parse(json);
-        ajax_send(url, json, SC_success, load_error);
+        if (ensure) {
+            ajax_send(url, json, SC_success, load_error);
+        }
     }
 </script>
 <script type="text/javascript">
 course="";
 pages=0;
+lastpage = 0;
 course_number = 0;
 list = [];
 getname_success=function(data){
