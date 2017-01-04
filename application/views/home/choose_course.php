@@ -82,23 +82,41 @@ getteachersbycourse_success=function(data){
     pages=parseInt(data.length/6)+1;
     var teacherslist=data.teacherlist;
     var teacherlegth=(teacherslist.length>6)?6:teacherslist.length;
-    if(pages<5){
+    if(lastpage==0&&pages<5){
+        lastpage=pages;
         for(var i=5;i!=pages;i--){
             var str="a"+i;
-            if (document.getElementById(str) != null) {
-                document.getElementById(str).parentNode.removeChild(document.getElementById(str));
-            }
+            document.getElementById(str).parentNode.removeChild(document.getElementById(str));
         }
+    }
+    else if(lastpage<pages&&pages<=5){
+        for(lastpage=lastpage+1;lastpage!=pages+1;lastpage++){
+            var temp=lastpage-1;
+            var str="a"+temp;
+            var linode=document.getElementById(str);
+            linode.insertAdjacentHTML("afterEnd", "<li id=\"a"+Number.toString(lastpage)+"\"><a href=\"#\">"+lastpage+"</a></li>");
+        }
+    }
+    else if(pages<lastpage&&lastpage<=5){
+        for(;lastpage!=pages;lastpage--){
+            var str="a"+lastpage;
+            document.getElementById(str).parentNode.removeChild(document.getElementById(str));
+        }
+    }
+    else{
+
     }
     for(var i=0;i<teacherlegth;i++){
         var temp=i+1;
         var str_course="course"+temp;
         var str_teacher="teacher"+temp;
         var str_profile="profile"+temp;
+        var str_img="img"+temp;
 
         document.getElementById(str_course).innerHTML=course;
         document.getElementById(str_teacher).innerHTML=teacherslist[i].uname;
-        document.getElementById(str_profile).innerHTML=teacherslist[i].introduction;
+        document.getElementById(str_profile).innerHTML="profile:"+teacherslist[i].introduction;
+        //document.getElementById(str).src="http://localhost:8080/application/views/home/images/"+Number.toString(teacherslist[i].uid)+".jpg";
     }
 
 }
@@ -250,7 +268,7 @@ getteachersbycourse_success=function(data){
         <ul class="grid cs-style-5">
                 <li>
                     <figure>
-                        <img src="http://localhost:8080/application/views/home/images/a1.jpg" alt="img03">
+                        <img id="img1" src="http://localhost:8080/application/views/home/images/a1.jpg" alt="img03">
                         <figcaption>
                         <center><h3 id="course1">请选择课程或老师</h3></center>
                             <span id="teacher1" style="position:absolute;left:140px;top:230px;">空</span>
@@ -261,7 +279,7 @@ getteachersbycourse_success=function(data){
                 </li>
                 <li>
                     <figure>
-                        <img src="http://localhost:8080/application/views/home/images/a2.jpg" alt="img04">
+                        <img id="img2" src="http://localhost:8080/application/views/home/images/a2.jpg" alt="img04">
                         <figcaption>
                         <center><h3 id="course2">请选择课程或老师</h3></center>
                             <span id="teacher2" style="position:absolute;left:140px;top:230px;">空</span>
@@ -272,7 +290,7 @@ getteachersbycourse_success=function(data){
                 </li>
                 <li>
                     <figure>
-                        <img src="http://localhost:8080/application/views/home/images/a3.jpg" alt="img01">
+                        <img id="img3" src="http://localhost:8080/application/views/home/images/a3.jpg" alt="img01">
                         <figcaption>
                         <center><h3 id="course3">请选择课程或老师</h3></center>
                             <span id="teacher3" style="position:absolute;left:140px;top:230px;">空</span>
@@ -283,7 +301,7 @@ getteachersbycourse_success=function(data){
                 </li>
                 <li>
                     <figure>
-                        <img src="http://localhost:8080/application/views/home/images/a4.jpg" alt="img02">
+                        <img id="img4" src="http://localhost:8080/application/views/home/images/a4.jpg" alt="img02">
                         <figcaption>
                         <center><h3 id="course4">请选择课程或老师</h3></center>
                             <span id="teacher4" style="position:absolute;left:140px;top:230px;">空</span>
@@ -294,7 +312,7 @@ getteachersbycourse_success=function(data){
                 </li>
                 <li>
                     <figure>
-                        <img src="http://localhost:8080/application/views/home/images/a5.jpg" alt="img06">
+                        <img id="img5" src="http://localhost:8080/application/views/home/images/a5.jpg" alt="img06">
                         <figcaption>
                         <center><h3 id="course5">请选择课程或老师</h3></center>
                             <span id="teacher5" style="position:absolute;left:140px;top:230px;">空</span>
@@ -305,7 +323,7 @@ getteachersbycourse_success=function(data){
                 </li>
                 <li>
                     <figure>
-                        <img src="http://localhost:8080/application/views/home/images/a6.jpg" alt="img05">
+                        <img id="img6" src="http://localhost:8080/application/views/home/images/a6.jpg" alt="img05">
                         <figcaption>
                         <center><h3 id="course6">请选择课程或老师</h3></center>
                             <span id="teacher6" style="position:absolute;left:140px;top:230px;">空</span>
@@ -318,23 +336,41 @@ getteachersbycourse_success=function(data){
             <ul class="pagination pagination-lg" id="u1">
                 <li><a href="#" onclick="left_move()">&laquo;</a></li>
                 <script type="text/javascript">
-                function left_move(){
-                    var first_page=document.getElementById("a1");
-                    if(first_page.innerHTML==1){
-                        ;
+                    left_move_success=function(data){
+                        var first_page=document.getElementById("a1");
+                        var des_page=first_page.innerHTML-1;
+                        if(pages-des_page<5){
+                        //更改标签和教师信息append
+                        }
+                        else{
+                            //更改不需要append
+                        }
                     }
-                    else{
-                        var des_page=first_page.value-1;
-                        var url="http://localhost:8080/index.php?c=Main&";
+                    function left_move(){
+                        var first_page=document.getElementById("a1");
+                        if(first_page.innerHTML==1){
+
+                        }
+                        else{
+                            var des_page=first_page.innerHTML-1;
+                            var url="http://localhost:8080/index.php?c=Main&a=getTeacherListbyCourseInten";
+                            var json="{\"courseid\":"+course_number+",\"number\":"+des_page+",\"max\":"+"6}";
+                            json=JSON.parse(json);
+                            ajax_send(url,json,left_move_success,load_error);
+                        }
                     }
-                }
                 </script>
                 <li id="a1"><a id = "a11" href="#">1</a></li>
                 <li id="a2"><a id = "a12" href="#">2</a></li>
                 <li id="a3"><a id = "a13" href="#">3</a></li>
                 <li id="a4"><a id = "a14" href="#">4</a></li>
                 <li id="a5"><a id = "a15" href="#">5</a></li>
-                <li id="right"><a href="#">&raquo;</a></li>
+                <li id="right"><a href="#" onclick="right_move()">&raquo;</a></li>
+                <script type="text/javascript">
+                    function right_move(){
+
+                    }
+                </script>
             </ul>
     </div>
 </div>
