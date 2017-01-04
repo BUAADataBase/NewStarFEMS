@@ -29,6 +29,29 @@ class BrowseController extends BaseController {
         echo json_encode($newresult);
     }
 
+    public function getConfirmedStudentAction() {
+        $teacherid = $_SESSION['uid'];
+        $num = $_POST['number'];
+        $max = $_POST['max'];
+        $browsemodel = new BrowseModel("selectcourse");
+        $result = $browsemodel->getStudentsbyUID($teacherid);
+        $length = count($result);
+        if ($length < $max * $num - $max + 1) {
+            $result = array();
+        }
+        else if ($length >= $max * $num - $max + 1 && $length <= $max * $num) {
+            $result = array_slice($result, $max * $num - $max, $length - $max * $num + $max);
+        }
+        else {
+            $result = array_slice($result, $max * $num - $max, $max);
+        }
+        $newresult = array (
+            "studentlist" => $result,
+            "listlength" => $length
+            );
+        echo json_encode($newresult);
+    }
+
 
     public function ConfirmAction() {
         $teacherid = $_SESSION['uid'];
