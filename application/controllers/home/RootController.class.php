@@ -16,7 +16,7 @@ class RootController extends BaseController {
         $userid = $_POST['uid'];
         $rootmodel = new RootModel("user");
         $rootmodel->deleteUserbyuid($userid);
-        if ($rootmodel->queryOneUserbyuid($userid)) {
+        if ($rootmodel->queryOneUserbyuid($userid) == false) {
             echo json_encode(array("status" => "failed", "reason" => "The user is not exists."));
         }
         else {
