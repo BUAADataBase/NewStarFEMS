@@ -3,7 +3,7 @@
 class SelectedController extends BaseController {
 
     public function SelectedCourseAction() {
-        $studentid = $_POST['uid'];
+        $studentid = $_SESSION['uid'];
         $num = $_POST['number'];
         $max = $_POST['max'];
         $selectedmodel = new SelectedModel("selectcourse");
@@ -22,6 +22,25 @@ class SelectedController extends BaseController {
             "listlength" => $length
             );
         echo json_encode($newresult);
+    }
+
+    public function CancelCourseAction() {
+        $studentid = $_SESSION['uid'];
+        $teacherid = $_POST['teacherid'];
+        $courseid = $_POST['courseid'];
+        $selectedmodel = new SelectedModel("selectcourse");
+        if ($selectedmodel->selectbyuidAndcid($studentid, $teacherid, $courseid)) {
+            $selectedmodel->deletebyuidAndcid($studentid, $teacherid, $courseid);
+            $result =array (
+                "status" => "success",
+                "reason" => "");
+        }
+        else {
+            $result =array (
+                "status" => "failed",
+                "reason" => "The select course record is not exists.");
+        }
+        echo json_encode($result);
     }
 }
 
