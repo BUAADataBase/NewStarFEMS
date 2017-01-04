@@ -13,6 +13,9 @@ class IndexController extends BaseController{
             if ($_SESSION['identify'] == 1) {
                 include (CURR_VIEW_PATH . "main_teacher.php");
             }
+            else if ($_SESSION['identify'] == 2) {
+                include (CURR_VIEW_PATH . "root.php");
+            }
             else {
                 include (CURR_VIEW_PATH . "main_student.php");
             }

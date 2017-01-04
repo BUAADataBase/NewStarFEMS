@@ -30,6 +30,9 @@ class LoginController extends BaseController {
         if ($_SESSION['identify'] == 1) {
             $this->redirect("", "main_teacher", 1);
         }
+        else if ($_SESSION['identify'] == 2){
+            $this->redirect("", "root", 1);
+        }
         else {
             $this->redirect("", "main_student", 1);
         }

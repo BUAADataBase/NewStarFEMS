@@ -7,6 +7,11 @@ class BlogModel extends Model {
         return $this->db->getAll($sql);
     }
 
+    public function getNamebyUID($userid) {
+        $sql = "select uname from user where $uid = $userid";
+        return $this->db->getOne($sql);
+    }
+
 }
 
 
