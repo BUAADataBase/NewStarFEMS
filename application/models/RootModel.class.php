@@ -12,8 +12,13 @@ class RootModel extends Model {
         $this->db->query($sql);
     }
 
+    public function queryOneUserbyuid($uid) {
+        $sql = "select * from user where uid = $uid";
+        return $this->db->getOne($sql);
+    }
+
     public function queryUserbyuname($username) {
-        $sql = "select uid, uname, phonenumber, calTotalCost(uid) as money from user where uid = '$username'";
+        $sql = "select uid, uname, phonenumber, calTotalCost(uid) as money from user where uname = '$username'";
         return $this->db->getAll($sql);
     }
 }

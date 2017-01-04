@@ -1373,3 +1373,6 @@ select uid, uname, phonenumber, calTotalCost(uid) from user  [2017-01-04 12:12:5
 set names utf8  [2017-01-04 12:13:55]
 DESC user  [2017-01-04 12:13:55]
 select uid, uname, phonenumber, calTotalCost(uid) as money from user  [2017-01-04 12:13:55]
+set names utf8  [2017-01-04 12:22:59]
+DESC user  [2017-01-04 12:22:59]
+select uid, uname, phonenumber, calTotalCost(uid) as money from user  [2017-01-04 12:22:59]
