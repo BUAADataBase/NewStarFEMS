@@ -45,6 +45,12 @@ class StatisticsController extends BaseController {
             "student" => $array1);
         return json_encode($result);
     }
+
+    public function TableAction() {
+        $statisticsmodel = new StatisticsModel("user");
+        $result = $statisticsmodel->getAllMessage();
+        return json_encode($result);
+    }
 }
 
 

@@ -126,7 +126,7 @@ create function studentSelectCoursePercent()
     declare selectcoursestudentnum int;
     declare allstudentnum int;
     declare percent double precision;
-    select count(uid_student) into selectcoursestudentnum from selectcourse;
+    select count(uid_student) into selectcoursestudentnum from (select distinct uid_student from selectcourse, user where uid_student = user.uid and user.identify = 0) temp;
     select calNumberofStudent() into allstudentnum;
     return selectcoursestudentnum/allstudentnum;
     end;
@@ -145,7 +145,7 @@ create function teacherTeachCoursePercent()
     declare teachcourseteachernum int;
     declare allteachernum int;
     declare percent double precision;
-    select count(uid_teacher) into teachcourseteachernum from selectcourse;
+    select count(uid_teacher) into teachcourseteachernum from (select distinct uid_teacher from selectcourse, user where uid_teacher = user.uid and user.identify = 1) temp;
     select calNumberofTeacher() into allteachernum;
     return teachcourseteachernum/allteachernum;
     end;
@@ -241,7 +241,7 @@ DELIMITER ;
 call deleteUser(5);
 
 
-
+-- 计算学生选num个科目学习的人数
 drop function if exists getStudentNum;
 DELIMITER //
 create function getStudentNum(num int)
@@ -258,7 +258,7 @@ select getStudentNum(1);
 
 
 
-
+-- 计算学生选num个科目学习的人数
 drop procedure if exists getstudentNum;
 DELIMITER //
 create procedure getstudentNum(in num int, out result int)
@@ -285,7 +285,7 @@ create procedure getstudentNum(in num int, out result int)
 DELIMITER ;
 
 
-
+-- 计算老师教num个科目的人数
 drop function if exists getTeacherNum;
 DELIMITER //
 create function getTeacherNum(num int)
@@ -301,7 +301,7 @@ DELIMITER ;
 select getTeacherNum(1);
 
 
-
+-- 计算老师教num个科目的人数
 drop procedure if exists getteacherNum;
 DELIMITER //
 create procedure getteacherNum(in num int, out result int)
