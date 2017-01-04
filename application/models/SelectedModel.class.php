@@ -8,12 +8,12 @@ class SelectedModel extends Model {
     }
 
     public function selectbyuidAndcid($studentid, $teacherid, $courseid) {
-        $sql = "select * from $this->table where $this->table.uid_student = $studentid and $this->table.uid_teacher = $teacherid && $this->table.cid = $courseid";
+        $sql = "select * from $this->table where $this->table.uid_student = $studentid and $this->table.uid_teacher = $teacherid and $this->table.cid = $courseid";
         return $this->db->getOne($sql);
     }
 
     public function deletebyuidAndcid($studentid, $teacherid, $courseid) {
-        $sql = "delete from $this->table where $this->table.uid_student = $studentid and $this->table.uid_teacher = $teacherid && $this->table.cid = $courseid";
+        $sql = "delete from $this->table where $this->table.uid_student = $studentid and $this->table.uid_teacher = $teacherid and $this->table.cid = $courseid";
         $this->db->query($sql);
     }
 }

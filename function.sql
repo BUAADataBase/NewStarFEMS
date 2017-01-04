@@ -222,18 +222,21 @@ DELIMITER ;
 select calTotalIncome(1);
 
 
+-- 删除一个用户及其相关所有信息
 drop procedure if exists deleteUser;
 DELIMITER //
-create procedure deleteUser(in userid)
+create procedure deleteUser(in userid int)
     begin
         delete from profile where uid = userid;
         delete from selectcourse where uid_student = userid or uid_teacher = userid;
-        delete from taechcourse where uid = userid;
+        delete from teachcourse where uid = userid;
         delete from userblog where uid = userid;
         delete from user where uid = userid;
     end
 //
 DELIMITER ;
+
+call deleteUser(5);
 
 
 

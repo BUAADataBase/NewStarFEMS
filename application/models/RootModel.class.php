@@ -8,7 +8,8 @@ class RootModel extends Model {
     }
 
     public function deleteUserbyuid($uid) {
-
+        $sql = "call deleteUser($uid)";
+        $this->db->query($sql);
     }
 }
 
