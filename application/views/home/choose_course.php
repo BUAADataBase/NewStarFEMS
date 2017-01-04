@@ -61,12 +61,17 @@ getname_success=function(data){
                 ensure = true;
             }
         }
-        var currentpage = document.getElementById("a11");
-        teacherid = list.teacherlist[6*(currentpage.innerHTML - 1) + no - 1].uid;
-        var url = "http://localhost:8080/index.php?c=SC&a=SC";
-        var json = "{\"teacherid\":"+teacherid+",\"courseid\":"+course_number+",\"period\":"+period+"}";
-        json = JSON.parse(json);
-        if (ensure) {
+        var str="course"+no;
+        var course=document.getElementById(str);
+        if(course.innerHTML=="请选择课程或老师"){
+            alert("选课有误，请确认！");
+        }
+        else{
+            var currentpage = document.getElementById("a11");
+            teacherid = list.teacherlist[6*(currentpage.innerHTML - 1) + no - 1].uid;
+            var url = "http://localhost:8080/index.php?c=SC&a=SC";
+            var json = "{\"teacherid\":"+teacherid+",\"courseid\":"+course_number+",\"period\":"+period+"}";
+            json = JSON.parse(json);
             ajax_send(url, json, SC_success, load_error);
         }
     }
@@ -74,7 +79,7 @@ getname_success=function(data){
 <script type="text/javascript">
 course="";
 pages=0;
-lastpage = 0;
+lastpage=0;
 course_number = 0;
 list = [];
 getname_success=function(data){
@@ -119,6 +124,18 @@ getteachersbycourse_success=function(data){
         document.getElementById(str_course).innerHTML=course;
         document.getElementById(str_teacher).innerHTML=teacherslist[i].uname;
         document.getElementById(str_profile).innerHTML="profile:"+teacherslist[i].introduction;
+        //document.getElementById(str).src="http://localhost:8080/application/views/home/images/"+Number.toString(teacherslist[i].uid)+".jpg";
+    }
+    for(var i=teacherlegth;i<6;i++){
+        var temp=i+1;
+        var str_course="course"+temp;
+        var str_teacher="teacher"+temp;
+        var str_profile="profile"+temp;
+        var str_img="img"+temp;
+
+        document.getElementById(str_course).innerHTML="请选择课程或老师";
+        document.getElementById(str_teacher).innerHTML="空";
+        document.getElementById(str_profile).innerHTML="profile:空";
         //document.getElementById(str).src="http://localhost:8080/application/views/home/images/"+Number.toString(teacherslist[i].uid)+".jpg";
     }
 

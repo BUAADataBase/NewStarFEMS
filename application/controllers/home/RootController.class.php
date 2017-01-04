@@ -15,11 +15,11 @@ class RootController extends BaseController {
     public function deleteUserAction() {
         $userid = $_POST['uid'];
         $rootmodel = new RootModel("user");
-        $rootmodel->deleteUserbyuid($userid);
         if ($rootmodel->queryOneUserbyuid($userid) == false) {
             echo json_encode(array("status" => "failed", "reason" => "The user is not exists."));
         }
         else {
+            $rootmodel->deleteUserbyuid($userid);
             echo json_encode(array("status" => "success", "reason" => ""));
         }
     }

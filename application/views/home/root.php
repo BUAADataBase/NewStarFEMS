@@ -47,26 +47,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     getuserinfo_success=function(data){
         var datalength=data.length;
         var grandparentnode=document.getElementById("table");
-        for(var i = 0;i < datalength; i ++){
+        for(var i=0;i<datalength;i++){
             var parentnode=document.createElement("tr");
             var childnode1=document.createElement("td");
             childnode1.innerHTML=data[i].uid;
+            childnode1.setAttribute("style","text-align:center");
             var childnode2=document.createElement("td");
             childnode2.innerHTML=data[i].uname;
+            childnode2.setAttribute("style","text-align:center");
             var childnode3=document.createElement("td");
             childnode3.innerHTML=data[i].money;
+            childnode3.setAttribute("style","text-align:center");
             var childnode4=document.createElement("td");
             childnode4.innerHTML=data[i].phonenumber;
+            childnode4.setAttribute("style","text-align:center");
             var childnode5=document.createElement("td");
-            var childnode6=document.createElement("a");
-            childnode6.setAttribute("href","#");
-            childnode6.setAttribute("onclick","deleteUser("+data[i].uid+")");
-            childnode5.appendChild(childnode6);
+            childnode5.innerHTML=data[i].identify==0?"学生":"老师";
+            childnode5.setAttribute("style","text-align:center");
+            var childnode6=document.createElement("td");
+            var childnode7=document.createElement("center");
+            var childnode8=document.createElement("a");
+            childnode8.setAttribute("href","#");
+            childnode8.setAttribute("onclick","deleteUser("+data[i].uid+")");
+            childnode8.setAttribute("style","text-align:center");
+            childnode8.innerHTML="删除";
+            childnode7.appendChild(childnode8);
+            childnode6.appendChild(childnode7);
             parentnode.appendChild(childnode1);
             parentnode.appendChild(childnode2);
             parentnode.appendChild(childnode3);
             parentnode.appendChild(childnode4);
             parentnode.appendChild(childnode5);
+            parentnode.appendChild(childnode6);
             grandparentnode.appendChild(parentnode);
 
         }
@@ -75,6 +87,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         get_uname();
         var url="http://localhost:8080/index.php?c=Root&a=getUserInfo";
         ajax_send(url,0,getuserinfo_success,load_error);
+    }
+    delete_success=function(data){
+        if(data.status=="success")
+            alert("删除成功！");
+        else
+            alert(data.reason);
+        window.location.href="http://localhost:8080/index.php?c=Root&a=jump";
+    }
+    function deleteUser(par){
+        var url="http://localhost:8080/index.php?c=Root&a=deleteUser";
+        var json="{\"uid\":"+par+"}";
+        json=JSON.parse(json);
+        ajax_send(url,json,delete_success,load_error);
     }
 </script>
 <!--/script-->
@@ -156,21 +181,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <div>
     <table class="table table-bordered" style="width=1000px;">
-      <caption>用户信息</caption>
+      <caption style="text-align: center">用户信息</caption>
       <colgroup>
           <col style="width:12%">
           <col style="width:23%">
           <col style="width:23%">
-          <col style="width:30%">
+          <col style="width:20%">
+          <col style="width:10%">
           <col style="width:12%">
         </colgroup>
       <thead>
         <tr>
-          <th>用户编号</th>
-          <th>用户名</th>
-          <th>收入或支付</th>
-          <th>电话</th>
-          <th>操作</th>
+          <th style="text-align:center">用户编号</th>
+          <th style="text-align:center">用户名</th>
+          <th style="text-align:center">收入或支付</th>
+          <th style="text-align:center">电话</th>
+          <th style="text-align:center">身份</th>
+          <th style="text-align:center">操作</th>
         </tr>
       </thead>
       <tbody id="table">

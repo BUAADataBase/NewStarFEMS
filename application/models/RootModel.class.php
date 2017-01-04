@@ -3,7 +3,7 @@
 class RootModel extends Model {
 
     public function getInfo() {
-        $sql = "select uid, uname, phonenumber, calTotalCost(uid) as money from user";
+        $sql = "select uid, uname, identify, phonenumber, calTotalCost(uid) as money from user";
         return $this->db->getAll($sql);
     }
 
@@ -18,7 +18,7 @@ class RootModel extends Model {
     }
 
     public function queryUserbyuname($username) {
-        $sql = "select uid, uname, phonenumber, calTotalCost(uid) as money from user where uname = '$username'";
+        $sql = "select uid, uname, identify, phonenumber, calTotalCost(uid) as money from user where uname = '$username'";
         return $this->db->getAll($sql);
     }
 }
