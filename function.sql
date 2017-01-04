@@ -155,26 +155,28 @@ DELIMITER ;
 select teacherTeachCoursePercent();
 
 
+-- 计算一个学生上课的消费总额
 drop function if exists calTotalCost;
 DELIMITER //
 create function calTotalCost(studentid int)
     returns double precision
     begin
-    declare period int;
-    declare price double precision;
+    declare singleperiod int;
+    declare singleprice double precision;
     declare sum double precision;
     declare temp int;
-    declare rs cursor for select period, price from selectcourse where uid_student = studentid;
     declare done int default 0;
+    declare rs cursor for select period, price from selectcourse where uid_student = studentid;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
     select count(*) into temp from selectcourse where uid_student = studentid;
-    if temp == 0 then
+    if temp <= 0 then
         set sum = 0;
     else
         open rs;
-        fetch next from rs into period, price;
+        set sum = 0;
         repeat
-            set sum = sum + price * period;
-            fetch next from rs into period, price;
+            fetch rs into singleperiod, singleprice;
+            set sum = sum + singleprice * singleperiod;
         until done end repeat;
         close rs;
     end if;
@@ -184,5 +186,42 @@ create function calTotalCost(studentid int)
 DELIMITER ;
 
 select calTotalCost(1);
+
+
+
+-- 一个老师上课的收入总额
+drop function if exists calTotalIncome;
+DELIMITER //
+create function calTotalIncome(teacherid int)
+    returns double precision
+    begin
+    declare singleperiod int;
+    declare singleprice double precision;
+    declare sum double precision;
+    declare temp int;
+    declare done int default 0;
+    declare rs cursor for select period, price from selectcourse where uid_teacher = teacherid;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=1;
+    select count(*) into temp from selectcourse where uid_teacher = teacherid;
+    if temp <= 0 then
+        set sum = 0;
+    else
+        open rs;
+        set sum = 0;
+        repeat
+            fetch rs into singleperiod, singleprice;
+            set sum = sum + singleprice * singleperiod;
+        until done end repeat;
+        close rs;
+    end if;
+    return sum;
+    end;
+//
+DELIMITER ;
+
+select calTotalIncome(1);
+
+
+
 
 

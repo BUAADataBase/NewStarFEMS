@@ -2,7 +2,10 @@
 
 class RootModel extends Model {
 
-    public function
+    public function getInfo() {
+        $sql = "select uid, uname, phonenumber, calTotalCost(uid) from user";
+        return $this->db->getAll($sql);
+    }
 }
 
 
