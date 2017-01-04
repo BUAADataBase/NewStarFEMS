@@ -7,7 +7,7 @@ class BrowseModel extends Model {
         return $this->db->getAll($sql);
     }
 
-    public function getConfirmedStudentbyUID($teacherid) {
+    public function getConfirmedStudentsbyUID($teacherid) {
         $sql = "select user.uid, uname, course.cid, cname, introduction from user, selectcourse, profile, course where user.uid = selectcourse.uid_student and course.cid = selectcourse.cid and user.uid = profile.uid and selectcourse.uid_teacher = $teacherid and confirm = 1";
         return $this->db->getAll($sql);
     }

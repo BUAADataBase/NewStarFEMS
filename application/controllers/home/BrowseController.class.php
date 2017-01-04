@@ -38,7 +38,7 @@ class BrowseController extends BaseController {
         $num = $_POST['number'];
         $max = $_POST['max'];
         $browsemodel = new BrowseModel("selectcourse");
-        $result = $browsemodel->getStudentsbyUID($teacherid);
+        $result = $browsemodel->getConfirmedStudentsbyUID($teacherid);
         $length = count($result);
         if ($length < $max * $num - $max + 1) {
             $result = array();
