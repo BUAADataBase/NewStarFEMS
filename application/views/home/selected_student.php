@@ -82,7 +82,7 @@ getname_success=function(data){
 }
 getstudents_success=function(data){
     list = data;
-    pages=parseInt(data.length/6)+1;
+    pages=parseInt(data.listlength/6)+1;
     var studentslist=data.studentlist;
     var studentlegth=(studentslist.length>6)?6:studentslist.length;
     if(lastpage==0&&pages<5){

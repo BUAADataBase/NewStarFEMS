@@ -44,6 +44,13 @@ class SelectedController extends BaseController {
         echo json_encode($result);
     }
 
+    public function GetCostAction() {
+        $studentid = $_SESSION['uid'];
+        $selectedmodel = new SelectedModel("selectcourse");
+        $result = $selectedmodel->getCost($studentid);
+        echo json_encode(array ("cost" => $result));
+    }
+
     public function jumpAction() {
         $this->redirect("", "selected_course", 1);
     }

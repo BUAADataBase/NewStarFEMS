@@ -6,8 +6,11 @@ class BlogController extends BaseController {
         if ($_SESSION['identify'] == 0) {
             $this->redirect("", "blog_student", 1);
         }
-        else {
+        else if ($_SESSION['identify'] == 1) {
             $this->redirect("", "blog_teacher", 1);
+        }
+        else {
+            $this->redirect("", "blog_root", 1);
         }
     }
 

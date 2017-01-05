@@ -16,6 +16,12 @@ class SelectedModel extends Model {
         $sql = "delete from $this->table where $this->table.uid_student = $studentid and $this->table.uid_teacher = $teacherid and $this->table.cid = $courseid";
         $this->db->query($sql);
     }
+
+
+    public function getCost($studentid) {
+        $sql = "select calTotalCost($studentid) as cost";
+        return $this->db->getOne($sql);
+    }
 }
 
 

@@ -92,7 +92,7 @@ class MainController extends BaseController {
         $length = count($result);
         $result = array (
             "teacherlist" => $result,
-            "length" => $length);
+            "listlength" => $length);
         echo json_encode($result);
     }
 
@@ -103,7 +103,7 @@ class MainController extends BaseController {
         $length = count($result);
         $result = array (
             "courselist" => $result,
-            "length" => $length);
+            "listlength" => $length);
         echo json_encode($result);
     }
 
@@ -125,7 +125,7 @@ class MainController extends BaseController {
         }
         $newresult = array (
             "teacherlist" => $result,
-            "length" => $length
+            "listlength" => $length
             );
         echo json_encode($newresult);
     }
@@ -147,7 +147,7 @@ class MainController extends BaseController {
         }
         $newresult = array (
             "courselist" => $result,
-            "length" => $length
+            "listlength" => $length
             );
         echo json_encode($newresult);
     }

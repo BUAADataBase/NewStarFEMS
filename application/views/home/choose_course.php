@@ -87,7 +87,7 @@ getname_success=function(data){
 }
 getteachersbycourse_success=function(data){
     list = data;
-    pages=parseInt(data.length/6)+1;
+    pages=parseInt(data.listlength/6)+1;
     var teacherslist=data.teacherlist;
     var teacherlegth=(teacherslist.length>6)?6:teacherslist.length;
     if(lastpage==0&&pages<5){
@@ -138,7 +138,7 @@ getteachersbycourse_success=function(data){
         document.getElementById(str_profile).innerHTML="profile:空";
         //document.getElementById(str).src="http://localhost:8080/application/views/home/images/"+Number.toString(teacherslist[i].uid)+".jpg";
     }
-
+    alert("成功找到 " + data.listlength + " 个可选课程");
 }
     function get_teachers(){
         var url="http://localhost:8080/index.php?c=Main&a=getname";

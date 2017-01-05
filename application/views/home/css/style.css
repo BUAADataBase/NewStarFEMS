@@ -505,7 +505,7 @@ i.arrow {
     position:relative;
     z-index:30;
     cursor:pointer;
-    width: 120px;
+    width:120px;
     position: absolute;
     left:-50px;
 }

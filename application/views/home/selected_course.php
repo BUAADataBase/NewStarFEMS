@@ -79,6 +79,15 @@ list = [];
 getname_success=function(data){
     var user_name=document.getElementById("welcome_user").innerHTML="<font color=\"white\">欢迎，"+data.name+"</font>";
 }
+getcost_success=function(data){
+    var cost=document.getElementById("cost");
+    cost.innerHTML="总价："+data.cost;
+
+}
+function get_cost(){
+    var url="http://localhost:8080/index.php?c=Selected&a=GetCost";
+    ajax_send(url,0,getcost_success,load_error);
+}
 getteachersbycourse_success=function(data){
     list = data;
     pages=parseInt(data.listlength/6)+1;
@@ -144,6 +153,7 @@ getteachersbycourse_success=function(data){
 }
     function get_teachers(){
             get_uname();
+            get_cost();
             var json="{\"number\":1"+",\"max\":6"+"}";
             url="http://localhost:8080/index.php?c=Selected&a=SelectedCourse";
             json=JSON.parse(json);
@@ -357,6 +367,7 @@ getteachersbycourse_success=function(data){
                 <li id="a4"><a id = "a14" href="#">4</a></li>
                 <li id="a5"><a id = "a15" href="#">5</a></li>
                 <li id="right"><a href="#" onclick="right_move()">&raquo;</a></li>
+                <label style="position:absolute;left:900px"><font id="cost" size="20" color="5B00AE">总价：</font></label>
                 <script type="text/javascript">
                     function right_move(){
 
